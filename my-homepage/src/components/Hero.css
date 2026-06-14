@@ -2,7 +2,7 @@
   min-height: 90vh;
   display: flex;
   align-items: center;
-  background: #0f172a;
+  background: #fff;
   color: white;
   padding: 80px 8%;
 }
@@ -33,6 +33,7 @@
   font-size: 4rem;
   line-height: 1.1;
   margin-bottom: 20px;
+  color:black;
 }
 
 .hero-content h1 span {
@@ -65,7 +66,7 @@
 
 .secondary-btn {
   background: transparent;
-  color: white;
+  color:black;
   border: 1px solid #334155;
   padding: 15px 28px;
   border-radius: 10px;

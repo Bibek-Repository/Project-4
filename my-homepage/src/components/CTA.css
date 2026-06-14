@@ -1,0 +1,116 @@
+.cta-section {
+  padding: 90px 20px;
+  background: linear-gradient(135deg, #0f172a, #111827);
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle glow effect */
+.cta-section::before {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: #38bdf8;
+  filter: blur(120px);
+  opacity: 0.15;
+  top: -100px;
+  left: -100px;
+  border-radius: 50%;
+}
+
+.cta-container {
+  max-width: 900px;
+  margin: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-title {
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+}
+
+.cta-subtitle {
+  color: #94a3b8;
+  font-size: 1.1rem;
+  margin-bottom: 35px;
+  line-height: 1.6;
+}
+
+/* BUTTONS */
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.cta-primary {
+  background: #38bdf8;
+  color: #0b1220;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-weight: 600;
+}
+
+.cta-primary:hover {
+  background: #0ea5e9;
+  transform: translateY(-3px);
+}
+
+.cta-secondary {
+  background: transparent;
+  border: 1px solid #38bdf8;
+  color: #38bdf8;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.cta-secondary:hover {
+  background: #38bdf8;
+  color: #0b1220;
+  transform: translateY(-3px);
+}
+
+/* TABLET */
+@media (max-width: 992px) {
+  .cta-title {
+    font-size: 2.3rem;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .cta-section {
+    padding: 70px 15px;
+  }
+
+  .cta-title {
+    font-size: 1.8rem;
+  }
+
+  .cta-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cta-primary,
+  .cta-secondary {
+    width: 100%;
+    max-width: 280px;
+  }
+}

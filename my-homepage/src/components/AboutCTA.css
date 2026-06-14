@@ -1,0 +1,15 @@
+.about-cta {
+  text-align: center;
+  padding: 80px 10%;
+  background: linear-gradient(135deg, #0f172a, #111827);
+}
+
+.about-cta button {
+  margin-top: 20px;
+  padding: 12px 20px;
+  border: none;
+  background: #38bdf8;
+  color: black;
+  border-radius: 10px;
+  cursor: pointer;
+}

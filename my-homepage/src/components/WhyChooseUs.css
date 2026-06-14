@@ -1,0 +1,122 @@
+.why-section {
+  padding: 80px 20px;
+  background: #0b1220;
+  color: white;
+}
+
+.why-container {
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+}
+
+/* TITLE */
+.why-title {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.why-subtitle {
+  color: #94a3b8;
+  margin-bottom: 50px;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* GRID (Desktop default) */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+/* CARD */
+.why-card {
+  background: #111827;
+  padding: 25px;
+  border-radius: 15px;
+  transition: 0.3s ease;
+  border: 1px solid transparent;
+  text-align: left;
+
+  /* improves mobile tap experience */
+  cursor: default;
+}
+
+.why-card:hover {
+  transform: translateY(-5px);
+  border-color: #38bdf8;
+}
+
+.why-icon {
+  font-size: 2.2rem;
+  margin-bottom: 15px;
+}
+
+.why-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.why-card p {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* =========================
+   📱 TABLET (<= 992px)
+========================= */
+@media (max-width: 992px) {
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .why-title {
+    font-size: 2.2rem;
+  }
+
+  .why-subtitle {
+    margin-bottom: 40px;
+  }
+}
+
+/* =========================
+   📱 MOBILE (<= 600px)
+========================= */
+@media (max-width: 600px) {
+  .why-section {
+    padding: 60px 15px;
+  }
+
+  .why-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .why-title {
+    font-size: 1.8rem;
+  }
+
+  .why-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+  }
+
+  .why-card {
+    padding: 20px;
+    text-align: center; /* better mobile readability */
+  }
+
+  .why-icon {
+    font-size: 2rem;
+  }
+
+  .why-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .why-card p {
+    font-size: 0.9rem;
+  }
+}

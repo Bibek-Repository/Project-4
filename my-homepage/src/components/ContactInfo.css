@@ -1,0 +1,44 @@
+.contact-info {
+  padding: 80px 10%;
+  background: white;
+}
+
+.contact-info-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 25px;
+}
+
+.info-card {
+  background: #111827;
+  padding: 35px;
+  border-radius: 18px;
+  text-align: center;
+  transition: 0.3s;
+  border: 1px solid transparent;
+}
+
+.info-card:hover {
+  transform: translateY(-8px);
+  border-color: #38bdf8;
+}
+
+.info-icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.info-card h3 {
+  color: white;
+  margin-bottom: 10px;
+}
+
+.info-card p {
+  color: #94a3b8;
+}
+
+@media(max-width:768px) {
+  .contact-info-grid {
+    grid-template-columns: 1fr;
+  }
+}
