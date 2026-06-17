@@ -1,0 +1,35 @@
+.events-hero {
+  height: 70vh;
+  background:
+  linear-gradient(rgba(15,23,42,.7),
+  rgba(15,23,42,.7)),
+  url("https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600");
+
+  background-size: cover;
+  background-position: center;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.events-overlay{
+  text-align:center;
+  color:white;
+  max-width:800px;
+}
+
+.events-overlay h1{
+  font-size:4rem;
+  margin-bottom:20px;
+}
+
+.events-overlay p{
+  font-size:1.2rem;
+}
+
+@media (max-width:768px){
+ .events-overlay h1{
+    font-size:2.5rem;
+  }
+}

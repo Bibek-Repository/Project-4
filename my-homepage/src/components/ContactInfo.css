@@ -1,5 +1,5 @@
 .contact-info {
-  padding: 80px 10%;
+  padding: 50px 10%;
   background: white;
 }
 
@@ -10,7 +10,7 @@
 }
 
 .info-card {
-  background: #111827;
+  background: #cfe2d9;
   padding: 35px;
   border-radius: 18px;
   text-align: center;
@@ -24,17 +24,17 @@
 }
 
 .info-icon {
-  font-size: 2.5rem;
+  font-size: 4.5rem;
   margin-bottom: 15px;
 }
 
 .info-card h3 {
-  color: white;
+  color: black;
   margin-bottom: 10px;
 }
 
 .info-card p {
-  color: #94a3b8;
+  color: black;
 }
 
 @media(max-width:768px) {

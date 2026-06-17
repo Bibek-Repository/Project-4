@@ -9,6 +9,28 @@ function AboutHero() {
           Overview AI Solutions is a modern tech company specializing in AI,
           automation, and scalable web applications for global businesses.
         </p>
+
+         <div class="overview-container">
+    
+            <div class="overview-box">
+              <div class="icon">🤖</div>
+              <h3>AI Development</h3>
+              
+            </div>
+
+            <div class="overview-box">
+              <div class="icon">⚙️</div>
+              <h3>Automation Systems</h3>
+              
+            </div>
+
+            <div class="overview-box">
+              <div class="icon">🌐</div>
+              <h3>Scalable Web Apps</h3>
+              
+            </div>
+
+          </div>
       </div>
 
       <img

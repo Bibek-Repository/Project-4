@@ -1,6 +1,6 @@
 .contact-map {
   padding: 80px 10%;
-  background: #0f172a;
+  background: #d9dde6;
 }
 
 .map-header {
@@ -9,7 +9,7 @@
 }
 
 .map-header h2 {
-  color: white;
+  color: rgb(0, 0, 0);
   margin-bottom: 10px;
 }
 

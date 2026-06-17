@@ -13,7 +13,7 @@ function Navbar() {
         <li><Link to="/Reviews">Customer Ratings & Feedbacks</Link></li>
         <li><Link to="/Contact">Contact Us</Link></li>
         <li><Link to="/GalleryBlog">Photo Galleries and Blogs</Link></li>
-        <li><Link to="/">Events Timeline</Link></li>
+        <li><Link to="/Events">Events Timeline</Link></li>
         <li><Link to="/">Provided Software Solutions</Link></li>
       </ul>
     </nav>

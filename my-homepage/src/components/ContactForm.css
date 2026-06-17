@@ -1,6 +1,6 @@
 .contact-form-section {
   padding: 80px 20px;
-  background: #111827;
+  background: #ffffff;
 }
 
 .form-container {
@@ -10,7 +10,7 @@
 
 .form-container h2 {
   text-align: center;
-  color: white;
+  color: black;
   margin-bottom: 30px;
 }
 
@@ -25,8 +25,8 @@ textarea {
   padding: 16px;
   border-radius: 12px;
   border: 1px solid #374151;
-  background: #0f172a;
-  color: white;
+  background: #e9f0ee;
+  color: rgb(12, 27, 19);
   transition: 0.3s;
 }
 
@@ -40,10 +40,11 @@ button {
   padding: 15px;
   border: none;
   border-radius: 12px;
-  background: #38bdf8;
+  background: #6c6f70;
   cursor: pointer;
   font-weight: 600;
   transition: 0.3s;
+  font:white;
 }
 
 button:hover {

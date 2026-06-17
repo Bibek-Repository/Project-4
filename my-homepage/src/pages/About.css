@@ -1,6 +1,6 @@
 .about-page {
-  background: #0f172a;
-  color: white;
+  background: #ffffff;
+  color: rgb(0, 0, 0);
 }
 
 /* about-hero section */
@@ -16,6 +16,20 @@
 .about-hero img {
   width: 450px;
   border-radius: 15px;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Floating animation */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 .about-hero h1 {
@@ -23,9 +37,60 @@
 }
 
 .about-hero p {
-  color: #94a3b8;
+  color: #000000;
   margin-top: 15px;
   line-height: 1.6;
+}
+
+.overview-container {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap; 
+  overflow-x: auto;  
+  padding-bottom: 10px;
+  margin-top:8px;
+  
+}
+
+
+.overview-box {
+  flex: 1;
+  min-width: 100px;
+  max-width: 100px;
+  background: #eaefed;
+  padding: 30px 25px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: 0.3s ease;
+  margin-top:8px;
+}
+
+.overview-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+}
+
+.icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  text-align:center;
+}
+
+.overview-box h3 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  color: #222;
+  text-align:center;
+}
+
+.overview-box p {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.5;
+  text-align:center;
+}
 }
 
 /* MOBILE */
@@ -56,14 +121,14 @@
 }
 
 .stat-card {
-  background: #111827;
+  background: #e5e7ec;
   padding: 30px;
   border-radius: 12px;
 }
 
 .stat-card h2 {
   font-size: 2rem;
-  color: #38bdf8;
+  color: #3318e4;
 }
 
 /* MOBILE */
@@ -80,12 +145,14 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 25px;
   padding: 80px 10%;
+  color:white;
 }
 
 .card {
   background: #111827;
   padding: 30px;
   border-radius: 15px;
+  color:white;
 }
 
 /* MOBILE */
