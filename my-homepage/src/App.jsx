@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -10,10 +10,24 @@ import Contact from "./pages/Contact";
 import GalleryBlog from "./pages/GalleryBlog";
 import Events from "./pages/Events";
 
+import Login from "./admin/Login";
+import Dashboard from "./admin/Dashboard";
+
+import EventsManagement from "./admin/EventsManagement";
+import BlogsManagement from "./admin/BlogsManagement";
+import ServicesManagement from "./admin/ServicesManagement";
+import ContactManagement from "./admin/ContactManagement";
+import SiteSettings from "./admin/SiteSettings";
+import ChangePassword from "./admin/ChangePassword";
+
 function App() {
+  const location = useLocation();
+
+  const isAdminPage = location.pathname.startsWith("/admin");
+
   return (
     <>
-      <Navbar />
+      {!isAdminPage && <Navbar />}
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -22,11 +36,23 @@ function App() {
         <Route path="/Contact" element={<Contact />} />
         <Route path="/GalleryBlog" element={<GalleryBlog />} />
         <Route path="/Events" element={<Events />} />
+
+        <Route path="/admin/login" element={<Login />} />
+        <Route path="/admin/dashboard" element={<Dashboard />} />
+        <Route path="/admin/events" element={<EventsManagement />} />
+        <Route path="/admin/blogs" element={<BlogsManagement />} />
+        <Route path="/admin/services" element={<ServicesManagement />} />
+        <Route path="/admin/contacts" element={<ContactManagement />} />
+        <Route path="/admin/settings" element={<SiteSettings />} />
+        <Route path="/admin/password" element={<ChangePassword />} />
       </Routes>
 
-      <Footer />
+      {!isAdminPage && <Footer />}
     </>
   );
 }
 
 export default App;
+
+
+
