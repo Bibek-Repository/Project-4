@@ -9,6 +9,8 @@ import Reviews from "./pages/Reviews";
 import Contact from "./pages/Contact";
 import GalleryBlog from "./pages/GalleryBlog";
 import Events from "./pages/Events";
+import FinalServices from "./pages/FinalServices";
+
 
 import Login from "./admin/Login";
 import Dashboard from "./admin/Dashboard";
@@ -36,6 +38,7 @@ function App() {
         <Route path="/Contact" element={<Contact />} />
         <Route path="/GalleryBlog" element={<GalleryBlog />} />
         <Route path="/Events" element={<Events />} />
+        <Route path="/FinalServices" element={<FinalServices />} />
 
         <Route path="/admin/login" element={<Login />} />
         <Route path="/admin/dashboard" element={<Dashboard />} />

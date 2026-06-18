@@ -1,0 +1,70 @@
+.events-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:25px;
+}
+
+.add-event-btn{
+  background:#2563eb;
+  color:white;
+  border:none;
+  padding:12px 18px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+.events-table-container{
+  background:white;
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 8px 25px rgba(0,0,0,.05);
+}
+
+.events-table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+.events-table th{
+  background:#f8fafc;
+  padding:18px;
+  text-align:left;
+}
+
+.events-table td{
+  padding:18px;
+  border-top:1px solid #e2e8f0;
+}
+
+.edit-btn{
+  background:#f59e0b;
+  color:white;
+  border:none;
+  padding:8px 14px;
+  border-radius:8px;
+  cursor:pointer;
+  margin-right:8px;
+}
+
+.delete-btn{
+  background:#ef4444;
+  color:white;
+  border:none;
+  padding:8px 14px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+@media(max-width:768px){
+
+  .events-header{
+    flex-direction:column;
+    gap:15px;
+    align-items:flex-start;
+  }
+
+  .events-table-container{
+    overflow-x:auto;
+  }
+}

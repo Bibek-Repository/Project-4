@@ -9,24 +9,54 @@ function Dashboard() {
 
       <div className="dashboard-cards">
 
-        <div className="card">
+        <div className="dashboard-card">
           <h2>12</h2>
-          <p>Events</p>
+          <p>Total Events</p>
         </div>
 
-        <div className="card">
+        <div className="dashboard-card">
           <h2>8</h2>
-          <p>Blogs</p>
+          <p>Total Blogs</p>
         </div>
 
-        <div className="card">
+        <div className="dashboard-card">
           <h2>6</h2>
-          <p>Services</p>
+          <p>Total Services</p>
         </div>
 
-        <div className="card">
+        <div className="dashboard-card">
           <h2>24</h2>
-          <p>Enquiries</p>
+          <p>Total Enquiries</p>
+        </div>
+
+      </div>
+
+      <div className="dashboard-grid">
+
+        <div className="dashboard-panel">
+
+          <h3>Recent Activity</h3>
+
+          <ul>
+            <li>New enquiry received</li>
+            <li>AI Summit event added</li>
+            <li>Blog article updated</li>
+            <li>Service portfolio modified</li>
+          </ul>
+
+        </div>
+
+        <div className="dashboard-panel">
+
+          <h3>Recent Enquiries</h3>
+
+          <ul>
+            <li>Ram Shrestha</li>
+            <li>Hari Maharjan</li>
+            <li>Bikesh Bhandari</li>
+            <li>Rahul Joshi</li>
+          </ul>
+
         </div>
 
       </div>

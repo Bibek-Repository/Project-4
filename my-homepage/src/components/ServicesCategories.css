@@ -1,0 +1,25 @@
+.service-categories{
+  padding:90px 10%;
+}
+
+.categories-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:25px;
+  margin-top:40px;
+}
+
+.category-card{
+  background:white;
+  padding:30px;
+  border-radius:16px;
+  box-shadow:0 10px 30px rgba(0,0,0,.05);
+}
+
+.category-card ul{
+  margin-top:20px;
+}
+
+.category-card li{
+  margin-bottom:12px;
+}

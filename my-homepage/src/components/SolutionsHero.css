@@ -1,0 +1,23 @@
+.solutions-hero{
+  padding:120px 10%;
+  background:#f8fafc;
+  text-align:center;
+}
+
+.solutions-hero span{
+  color:#2563eb;
+  font-weight:600;
+}
+
+.solutions-hero h1{
+  font-size:3.5rem;
+  max-width:900px;
+  margin:20px auto;
+}
+
+.solutions-hero p{
+  max-width:700px;
+  margin:auto;
+  color:#64748b;
+  line-height:1.8;
+}

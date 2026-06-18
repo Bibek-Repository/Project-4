@@ -6,22 +6,22 @@ function ContactManagement() {
   const enquiries = [
     {
       id: 1,
-      name: "John Smith",
-      email: "john@gmail.com",
+      name: "Ramesh Baiju",
+      email: "ramesh@gmail.com",
       status: "New",
       date: "17 Jun 2026"
     },
     {
       id: 2,
-      name: "Sarah Johnson",
-      email: "sarah@gmail.com",
+      name: "Jyoti Baiju",
+      email: "Jyoti@gmail.com",
       status: "Read",
       date: "16 Jun 2026"
     },
     {
       id: 3,
-      name: "Michael Brown",
-      email: "michael@gmail.com",
+      name: "Ram prasad",
+      email: "ramprasad@gmail.com",
       status: "New",
       date: "15 Jun 2026"
     }
