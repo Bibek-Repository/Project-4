@@ -37,11 +37,14 @@ const registerAdmin = async (req, res) => {
         email,
         password: hashedPassword
       });
-
-    res.status(201).json({
-      message: "Admin created",
-      admin
-    });
+  res.status(201).json({
+    message: "Admin created",
+    admin: {
+      _id: admin._id,
+      name: admin.name,
+      email: admin.email
+    }
+  });
 
   } catch (error) {
     res.status(500).json({
