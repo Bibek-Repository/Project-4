@@ -8,6 +8,7 @@ const connectDB = require("./config/db");
 
 const authRoutes = require("./routes/authRoutes");
 const adminRoutes = require("./routes/adminRoutes");
+const contactRoutes = require("./routes/contactRoutes");
 
 connectDB();
 
@@ -18,6 +19,7 @@ app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/admin", adminRoutes);
+app.use("/api/contacts", contactRoutes);
 
 app.get("/", (req, res) => {
   res.send("AI Solutions API Running");
@@ -26,5 +28,10 @@ app.get("/", (req, res) => {
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-  console.log('Server running on ${PORT}');
+  console.log(`Server running on ${PORT}`);
 });
+
+
+
+
+
