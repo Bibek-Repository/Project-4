@@ -1,7 +1,25 @@
+import { useEffect, useState} from "react";
 import AdminLayout from "../components/AdminLayout";
 import "./Dashboard.css";
 
 function Dashboard() {
+
+  const [stats, setStats] = useState({});
+  const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/dashboard", {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        setStats(data);
+      })
+      .catch(err => console.log(err));
+  }, []);
+
   return (
     <AdminLayout>
 
@@ -66,3 +84,4 @@ function Dashboard() {
 }
 
 export default Dashboard;
+
