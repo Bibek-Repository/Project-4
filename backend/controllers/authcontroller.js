@@ -96,7 +96,51 @@ const loginAdmin = async (req, res) => {
   }
 };
 
+const changePassword = async (req, res) => {
+  try {
+    const { currentPassword, newPassword } = req.body;
+
+    const admin = await Admin.findById(req.admin._id);
+
+    if(!admin) {
+      return res.status(404).json({
+        message: "Admin not found",
+      });
+    }
+
+    const isMatch = await bcrypt.compare(
+      currentPassword,
+      admin.password
+    );
+
+    if (!isMatch) {
+      return res.status(400).json({
+        message: "Current password is incorrect",
+      });
+    }
+
+    const hashedPassword = await bcrypt.hash(
+      newPassword,
+      10
+    );
+
+    admin.password = hashedPassword;
+
+    await admin.save();
+
+    res.json({
+      message: "Password updated successfully",
+    });
+    } catch (error) {
+      res.status(500).json({
+        message:error.message,
+      });
+    }
+  };
+
+
 module.exports = {
   registerAdmin,
-  loginAdmin
+  loginAdmin,
+  changePassword
 };

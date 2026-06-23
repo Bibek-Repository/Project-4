@@ -14,6 +14,8 @@ const blogRoutes = require("./routes/blogRoutes");
 const eventRoutes = require("./routes/eventRoutes");
 const settingRoutes = require("./routes/settingRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
+const path = require("path");
+const uploadRoutes = require("./routes/uploadRoutes");
 
 connectDB();
 
@@ -30,6 +32,13 @@ app.use("/api/blogs", blogRoutes);
 app.use("/api/events", eventRoutes);
 app.use("/api/settings", settingRoutes);
 app.use("/api/dashboard", dashboardRoutes);
+app.use("/uploads",
+  express.static(
+    path.join(__dirname, "uploads")
+  )
+);
+
+app.use("/api/upload", uploadRoutes);
 
 app.get("/", (req, res) => {
   res.send("AI Solutions API Running");
