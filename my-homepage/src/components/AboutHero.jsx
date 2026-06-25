@@ -6,12 +6,12 @@ function AboutHero() {
       <div className="hero-text">
         <h1>We Build AI-Powered Digital Solutions</h1>
         <p>
-          Overview AI Solutions is a modern tech company specializing in AI,
+          AI Solutions is a modern tech company specializing in AI,
           automation, and scalable web applications for global businesses.
         </p>
 
          <div class="overview-container">
-    
+            
             <div class="overview-box">
               <div class="icon">🤖</div>
               <h3>AI Development</h3>

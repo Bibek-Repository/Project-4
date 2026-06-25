@@ -31,8 +31,10 @@
 
 /* Card */
 .service-card {
-  background: #111827;
+  background: white;
   padding: 25px;
+  border: 1px solid rgb(143, 139, 139);
+  border-color:gray;
   border-radius: 15px;
   transition: 0.3s ease;
   border: 1px solid transparent;
@@ -61,9 +63,27 @@
   line-height: 1.5;
 }
 
-/* =========================
-   📱 TABLET (<= 992px)
-========================= */
+.services-btn-wrapper{
+  text-align: center;
+  margin-top: 30px;
+}
+
+.toggle-btn {
+  background: #38bdf8;
+  color: white;
+  border:none;
+  padding: 12px 25px;
+  font-size: 16px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.toggle-btn:hover {
+  background: #0ea5e9;
+  transform: translateY(-2px;)
+}
+
 @media (max-width: 992px) {
   .services-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -74,9 +94,7 @@
   }
 }
 
-/* =========================
-   📱 MOBILE (<= 600px)
-========================= */
+
 @media (max-width: 600px) {
   .services-section {
     padding: 60px 15px;

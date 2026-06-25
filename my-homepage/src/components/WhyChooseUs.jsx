@@ -1,6 +1,9 @@
+import { useState } from "react";
 import "./WhyChooseUs.css";
 
 function WhyChooseUs() {
+  const [showAll, setShowAll] = useState(false);
+
   const points = [
     {
       title: "AI-Driven Innovation",
@@ -40,6 +43,8 @@ function WhyChooseUs() {
     },
   ];
 
+  const visiblePoints = showAll ? points : points.slice(0, 3);
+
   return (
     <section className="why-section">
       <div className="why-container">
@@ -49,13 +54,22 @@ function WhyChooseUs() {
         </p>
 
         <div className="why-grid">
-          {points.map((item, index) => (
+          {visiblePoints.map((item, index) => (
             <div className="why-card" key={index}>
               <div className="why-icon">{item.icon}</div>
               <h3>{item.title}</h3>
               <p>{item.description}</p>
             </div>
           ))}
+        </div>
+
+        <div className="why-btn-wrapper">
+          <button
+            className="toggle-btn"
+            onClick={() => setShowAll(!showAll)}
+          >
+            {showAll ? "View Less" : "View More"}
+          </button>
         </div>
       </div>
     </section>

@@ -67,6 +67,27 @@
   line-height: 1.6;
 }
 
+.projects-btn-wrapper {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.toggle-btn {
+    background: #38bdf8;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.toggle-btn:hover {
+    background: #0ea5e9;
+    transform: translateY(-2px);
+}
+
 /* TABLET */
 @media (max-width: 992px) {
   .projects-grid {

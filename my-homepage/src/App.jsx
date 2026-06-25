@@ -10,7 +10,7 @@ import Contact from "./pages/Contact";
 import GalleryBlog from "./pages/GalleryBlog";
 import Events from "./pages/Events";
 import FinalServices from "./pages/FinalServices";
-
+import ProtectedRoute from "./components/ProtectedRoute";
 
 import Login from "./admin/Login";
 import Dashboard from "./admin/Dashboard";
@@ -41,7 +41,12 @@ function App() {
         <Route path="/FinalServices" element={<FinalServices />} />
 
         <Route path="/admin/login" element={<Login />} />
-        <Route path="/admin/dashboard" element={<Dashboard />} />
+        <Route path="/admin/dashboard" element={
+                                                <ProtectedRoute>
+                                                <Dashboard />
+                                                </ProtectedRoute>
+                                               } 
+                                              />
         <Route path="/admin/events" element={<EventsManagement />} />
         <Route path="/admin/blogs" element={<BlogsManagement />} />
         <Route path="/admin/services" element={<ServicesManagement />} />

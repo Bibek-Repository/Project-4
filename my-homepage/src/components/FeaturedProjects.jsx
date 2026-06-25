@@ -1,6 +1,9 @@
+import { useState } from "react";
 import "./FeaturedProjects.css";
 
 function FeaturedProjects() {
+  const [showAll, setShowAll] = useState(false);
+
   const projects = [
     {
       title: "AI Customer Support Bot",
@@ -40,6 +43,8 @@ function FeaturedProjects() {
     },
   ];
 
+  const visibleProjects = showAll ? projects : projects.slice(0, 3);
+
   return (
     <section className="projects-section">
       <div className="projects-container">
@@ -49,13 +54,22 @@ function FeaturedProjects() {
         </p>
 
         <div className="projects-grid">
-          {projects.map((project, index) => (
+          {visibleProjects.map((project, index) => (
             <div className="project-card" key={index}>
               <span className="project-tag">{project.tag}</span>
               <h3>{project.title}</h3>
               <p>{project.description}</p>
             </div>
           ))}
+        </div>
+
+        <div className="projects-btn-wrapper">
+          <button
+            className="toggle-btn"
+            onClick={() => setShowAll(!showAll)}
+          >
+            {showAll ? "View Less" : "View More"}
+          </button>
         </div>
       </div>
     </section>

@@ -1,6 +1,10 @@
+
+import { useState } from "react";
 import "./Services.css";
 
 function Services() {
+  const [showAll, setShowAll] = useState(false);
+
   const services = [
     {
       title: "AI Virtual Assistant",
@@ -14,7 +18,7 @@ function Services() {
         "Modern, scalable, and responsive web applications using cutting-edge technologies.",
       icon: "🌐",
     },
-    {
+     {
       title: "Mobile Apps",
       description:
         "Cross-platform mobile applications for Android and iOS with smooth user experience.",
@@ -40,23 +44,33 @@ function Services() {
     },
   ];
 
+  const visibleServices = showAll ? services : services.slice(0,3);
+
   return (
     <section className="services-section">
       <div className="services-container">
         <h2 className="services-title">Our Services</h2>
-        <p className="services-subtitle">
+        <p className = "services-subtitle">
           AI-powered solutions designed to transform your business
         </p>
 
         <div className="services-grid">
-          {services.map((service, index) => (
+          {visibleServices.map((service, index)=> (
             <div className="service-card" key={index}>
               <div className="service-icon">{service.icon}</div>
               <h3>{service.title}</h3>
               <p>{service.description}</p>
-            </div>
+              </div>
           ))}
         </div>
+      
+
+      <div className="services-btn-wrapper">
+        <button
+          className="toggle-btn"
+          onClick={() => setShowAll(!showAll)}
+        >{showAll ? "View Less" : "View More"}</button>
+      </div>
       </div>
     </section>
   );

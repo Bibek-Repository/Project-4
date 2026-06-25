@@ -2,10 +2,9 @@
   min-height: 90vh;
   display: flex;
   align-items: center;
-  background: #fff;
-  color: white;
-  padding: 80px 8%;
-}
+  background: blue;
+  
+  padding: 2px 60px;
 
 .hero-container {
   width: 100%;
@@ -22,7 +21,7 @@
 .hero-badge {
   display: inline-block;
   background: rgba(59,130,246,0.15);
-  color: #60a5fa;
+  color: #9bc5f8;
   padding: 10px 18px;
   border-radius: 50px;
   margin-bottom: 20px;
@@ -37,7 +36,7 @@
 }
 
 .hero-content h1 span {
-  color: #3b82f6;
+  color: #ffffff;
 }
 
 .hero-content p {
@@ -79,23 +78,25 @@
 }
 
 .hero-stats h3 {
-  color: #3b82f6;
+  color: #ffffff;
   font-size: 2rem;
 }
 
 .hero-stats p {
   margin: 0;
+  color: black;
 }
 
 .hero-visual {
   flex: 1;
   display: flex;
   justify-content: center;
+  color:black;
 }
 
 .dashboard-card {
   width: 420px;
-  background: #1e293b;
+  background: #64559f;
   border-radius: 20px;
   padding: 30px;
   box-shadow: 0 20px 60px rgba(0,0,0,0.4);
@@ -111,7 +112,7 @@
   display: flex;
   align-items: center;
   gap: 15px;
-  background: #334155;
+  background: #6b96d3;
   padding: 18px;
   border-radius: 12px;
   margin-bottom: 15px;
