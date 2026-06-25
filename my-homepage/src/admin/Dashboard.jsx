@@ -2,23 +2,40 @@ import { useEffect, useState} from "react";
 import AdminLayout from "../components/AdminLayout";
 import "./Dashboard.css";
 
+
+
 function Dashboard() {
 
   const [stats, setStats] = useState({});
   const token = localStorage.getItem("token");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/dashboard", {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
+
+  fetch("http://localhost:5000/api/dashboard", {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
+    .then(res => res.json())
+    .then(data => {
+      setStats(data);
+      setLoading(false);
     })
-      .then(res => res.json())
-      .then(data => {
-        setStats(data);
-      })
-      .catch(err => console.log(err));
-  }, []);
+    .catch(err => {
+      console.log(err);
+      setLoading(false);
+    });
+
+}, []);
+
+if (loading) {
+  return (
+    <AdminLayout>
+      <h2>Loading Dashboard...</h2>
+    </AdminLayout>
+  );
+}
 
   return (
   <AdminLayout>
