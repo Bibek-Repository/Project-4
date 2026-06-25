@@ -11,6 +11,7 @@ import GalleryBlog from "./pages/GalleryBlog";
 import Events from "./pages/Events";
 import FinalServices from "./pages/FinalServices";
 import ProtectedRoute from "./components/ProtectedRoute";
+import GalleryManagement from "./admin/GalleryManagement";
 
 import Login from "./admin/Login";
 import Dashboard from "./admin/Dashboard";
@@ -53,6 +54,12 @@ function App() {
         <Route path="/admin/contacts" element={<ContactManagement />} />
         <Route path="/admin/settings" element={<SiteSettings />} />
         <Route path="/admin/password" element={<ChangePassword />} />
+        <Route path="/admin/gallery" element={
+                                                <ProtectedRoute>
+                                                  <GalleryManagement />
+                                                </ProtectedRoute>
+                                              }
+/>
       </Routes>
 
       {!isAdminPage && <Footer />}

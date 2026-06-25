@@ -16,6 +16,8 @@ const settingRoutes = require("./routes/settingRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
 const path = require("path");
 const uploadRoutes = require("./routes/uploadRoutes");
+const galleryRoutes =
+  require("./routes/galleryRoutes");
 
 connectDB();
 
@@ -39,6 +41,10 @@ app.use("/uploads",
 );
 
 app.use("/api/upload", uploadRoutes);
+app.use(
+  "/api/gallery",
+  galleryRoutes
+);
 
 app.get("/", (req, res) => {
   res.send("AI Solutions API Running");

@@ -10,6 +10,7 @@ import {
   FaCog,
   FaKey,
   FaSignOutAlt,
+  FaImages,
 } from "react-icons/fa";
 
 function AdminSidebar() {
@@ -28,6 +29,10 @@ function AdminSidebar() {
 
         <NavLink to="/admin/events">
           <li><FaCalendarAlt /> Events</li>
+        </NavLink>
+
+        <NavLink to="/admin/gallery">
+          <li><FaImages /> Gallery</li>
         </NavLink>
 
         <NavLink to="/admin/blogs">

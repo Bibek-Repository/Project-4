@@ -1,20 +1,28 @@
 const Blog = require("../models/Blog");
 
 const createBlog = async (req, res) => {
-    try {
+  try {
 
-        const blog = await Blog.create(req.body);
+    const slug =
+      req.body.title
+        .toLowerCase()
+        .replace(/\s+/g, "-")
+        .replace(/[^\w-]+/g, "");
 
-        res.status(201).json(blog);
+    const blog = await Blog.create({
+      ...req.body,
+      slug
+    });
 
-    } catch (error) {
+    res.status(201).json(blog);
 
-        res.status(500).json({
-            message: error.message,
-        });
+  } catch (error) {
 
-    }
+    res.status(500).json({
+      message: error.message
+    });
 
+  }
 };
 
 const getBlogs = async (req, res) => {
@@ -51,30 +59,50 @@ const getBlogById = async (req, res) => {
 };
 
 const updateBlog = async (req, res) => {
-    try{
-        const blog=
-            await Blog.findById(req.params.id);
 
-        if (!blog) {
-            return res.status(404).json({
-                message: "Blog not found",
-            });
-        }
+  try {
 
-        const updatedBlog = 
-            await Blog.findByIdAndUpdate(
-                req.params,id,
-                req.body,
-                { new: true }
-            );
+    const blog =
+      await Blog.findById(
+        req.params.id
+      );
 
-            res.json(updatedBlog);
-    } catch (error) {
-        res.status(500).json({
-            message: error.message,
-        });
+    if (!blog) {
+
+      return res.status(404).json({
+        message: "Blog not found"
+      });
+
     }
-    
+
+    const slug =
+      req.body.title
+        ?.toLowerCase()
+        .replace(/\s+/g, "-")
+        .replace(/[^\w-]+/g, "");
+
+    const updatedBlog =
+      await Blog.findByIdAndUpdate(
+        req.params.id,
+        {
+          ...req.body,
+          slug
+        },
+        {
+          new: true
+        }
+      );
+
+    res.json(updatedBlog);
+
+  } catch (error) {
+
+    res.status(500).json({
+      message: error.message
+    });
+
+  }
+
 };
 
 const deleteBlog = async (req, res) => {

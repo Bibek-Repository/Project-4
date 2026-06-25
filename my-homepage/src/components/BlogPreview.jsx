@@ -1,46 +1,124 @@
+import { useEffect, useState } from "react";
 import "./BlogPreview.css";
 
 function BlogPreview() {
-  const blogs = [
-    {
-      title: "How AI is Transforming Modern Businesses",
-      date: "June 2026",
-      excerpt:
-        "Explore how artificial intelligence is reshaping industries with automation, analytics, and intelligent systems.",
-    },
-    {
-      title: "Top 5 AI Tools for Startups in 2026",
-      date: "May 2026",
-      excerpt:
-        "A breakdown of essential AI tools that startups can use to scale faster and reduce operational costs.",
-    },
-    {
-      title: "Building Scalable MERN Applications",
-      date: "April 2026",
-      excerpt:
-        "Best practices for building scalable and maintainable full-stack applications using the MERN stack.",
-    },
-  ];
+
+  const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+
+    const fetchBlogs = async () => {
+
+      try {
+
+        const response = await fetch(
+          "http://localhost:5000/api/blogs"
+        );
+
+        const data = await response.json();
+
+        setBlogs(data);
+
+      } catch (error) {
+
+        console.error(
+          "Error loading blogs:",
+          error
+        );
+
+      } finally {
+
+        setLoading(false);
+
+      }
+
+    };
+
+    fetchBlogs();
+
+  }, []);
 
   return (
     <section className="blog-section">
+
       <div className="blog-container">
-        <h2 className="blog-title">Latest Blogs</h2>
+
+        <h2 className="blog-title">
+          Latest Blogs
+        </h2>
+
         <p className="blog-subtitle">
           Insights, updates, and knowledge from our AI development team
         </p>
 
-        <div className="blog-grid">
-          {blogs.map((blog, index) => (
-            <div className="blog-card" key={index}>
-              <span className="blog-date">{blog.date}</span>
-              <h3>{blog.title}</h3>
-              <p>{blog.excerpt}</p>
-              <button className="read-more">Read More</button>
-            </div>
-          ))}
-        </div>
+        {loading ? (
+
+          <p>Loading blogs...</p>
+
+        ) : (
+
+          <div className="blog-grid">
+
+            {blogs.length === 0 ? (
+
+              <p>No blogs available.</p>
+
+            ) : (
+
+              blogs.map((blog) => (
+
+                <div
+                  className="blog-card"
+                  key={blog._id}
+                >
+
+                  {blog.image && (
+
+                    <img
+                      src={`http://localhost:5000${blog.image}`}
+                      alt={blog.title}
+                      className="blog-image"
+                    />
+
+                  )}
+
+                  <span className="blog-date">
+
+                    {new Date(
+                      blog.createdAt
+                    ).toLocaleDateString()}
+
+                  </span>
+
+                  <span className="blog-category">
+                    {blog.category}
+                  </span>
+
+                  <h3>
+                    {blog.title}
+                  </h3>
+
+                  <p>
+                    {blog.excerpt}
+                  </p>
+
+                  <button className="read-more">
+                    Read More
+                  </button>
+
+                </div>
+
+              ))
+
+            )}
+
+          </div>
+
+        )}
+
       </div>
+
     </section>
   );
 }
