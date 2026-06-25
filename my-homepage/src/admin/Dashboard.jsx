@@ -21,66 +21,82 @@ function Dashboard() {
   }, []);
 
   return (
-    <AdminLayout>
+  <AdminLayout>
 
-      <h1>Dashboard</h1>
+    <h1>Dashboard</h1>
 
-      <div className="dashboard-cards">
+    <div className="dashboard-cards">
 
-        <div className="dashboard-card">
-          <h2>12</h2>
-          <p>Total Events</p>
-        </div>
+      <div className="dashboard-card">
+        <h2>{stats.totalEvents || 0}</h2>
+        <p>Total Events</p>
+      </div>
 
-        <div className="dashboard-card">
-          <h2>8</h2>
-          <p>Total Blogs</p>
-        </div>
+      <div className="dashboard-card">
+        <h2>{stats.totalBlogs || 0}</h2>
+        <p>Total Blogs</p>
+      </div>
 
-        <div className="dashboard-card">
-          <h2>6</h2>
-          <p>Total Services</p>
-        </div>
+      <div className="dashboard-card">
+        <h2>{stats.totalServices || 0}</h2>
+        <p>Total Services</p>
+      </div>
 
-        <div className="dashboard-card">
-          <h2>24</h2>
-          <p>Total Enquiries</p>
-        </div>
+      <div className="dashboard-card">
+        <h2>{stats.totalContacts || 0}</h2>
+        <p>Total Enquiries</p>
+      </div>
+
+    </div>
+
+    <div className="dashboard-grid">
+
+      <div className="dashboard-panel">
+
+        <h3>System Overview</h3>
+
+        <ul>
+          <li>Services Published: {stats.totalServices || 0}</li>
+          <li>Blogs Published: {stats.totalBlogs || 0}</li>
+          <li>Events Scheduled: {stats.totalEvents || 0}</li>
+          <li>Customer Enquiries: {stats.totalContacts || 0}</li>
+        </ul>
 
       </div>
 
-      <div className="dashboard-grid">
+      <div className="dashboard-panel">
 
-        <div className="dashboard-panel">
+        <h3>Recent Enquiries</h3>
 
-          <h3>Recent Activity</h3>
+        <ul>
 
-          <ul>
-            <li>New enquiry received</li>
-            <li>AI Summit event added</li>
-            <li>Blog article updated</li>
-            <li>Service portfolio modified</li>
-          </ul>
+          {stats.recentContacts &&
+            stats.recentContacts.length > 0 ? (
 
-        </div>
+              stats.recentContacts.map((contact) => (
 
-        <div className="dashboard-panel">
+                <li key={contact._id}>
+                  <strong>{contact.name}</strong>
+                  <br />
+                  <small>{contact.email}</small>
+                </li>
 
-          <h3>Recent Enquiries</h3>
+              ))
 
-          <ul>
-            <li>Ram Shrestha</li>
-            <li>Hari Maharjan</li>
-            <li>Bikesh Bhandari</li>
-            <li>Rahul Joshi</li>
-          </ul>
+            ) : (
 
-        </div>
+              <li>No enquiries found</li>
+
+            )}
+
+        </ul>
 
       </div>
 
-    </AdminLayout>
-  );
+    </div>
+
+  </AdminLayout>
+);
 }
 
 export default Dashboard;
