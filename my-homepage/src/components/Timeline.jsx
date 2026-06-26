@@ -1,53 +1,135 @@
 import "./Timeline.css";
+import { useEffect, useState } from "react";
 
 function Timeline() {
+
+  const [pastEvents, setPastEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+
+    const fetchEvents = async () => {
+
+      try {
+
+        const response = await fetch(
+          "http://localhost:5000/api/events"
+        );
+
+        const data = await response.json();
+
+        const today = new Date();
+
+        const completed = data
+
+          .filter(
+            (event) =>
+              new Date(event.eventDate) < today
+          )
+
+          .sort(
+            (a, b) =>
+              new Date(b.eventDate) -
+              new Date(a.eventDate)
+          );
+
+        setPastEvents(completed);
+
+      } catch (error) {
+
+        console.log(error);
+
+      } finally {
+
+        setLoading(false);
+
+      }
+
+    };
+
+    fetchEvents();
+
+  }, []);
+
   return (
+
     <section className="timeline-section">
 
-      <h2>Events Timeline</h2>
+      <h2>Past Events</h2>
 
-      <div className="timeline">
+      {loading ? (
 
-        <div className="timeline-item">
-          <div className="timeline-date">Jan 2026</div>
+        <p className="timeline-loading">
+          Loading events...
+        </p>
 
-          <div className="timeline-content">
-            <h3>AI Product Launch</h3>
-            <p>Launching our next-generation virtual assistant.</p>
-          </div>
+      ) : pastEvents.length === 0 ? (
+
+        <p className="timeline-loading">
+          No past events yet.
+        </p>
+
+      ) : (
+
+        <div className="timeline">
+
+          {pastEvents.map((event) => (
+
+            <div
+              className="timeline-item"
+              key={event._id}
+            >
+
+              <div className="timeline-date">
+
+                {new Date(
+                  event.eventDate
+                ).toLocaleDateString()}
+
+              </div>
+
+              <div className="timeline-content">
+
+                {event.image && (
+
+                  <img
+                    src={`http://localhost:5000${event.image}`}
+                    alt={event.title}
+                    className="timeline-image"
+                  />
+
+                )}
+
+                <h3>{event.title}</h3>
+
+                <p>{event.description}</p>
+
+                <span className="timeline-location">
+
+                  📍 {event.location}
+
+                </span>
+
+                <span className="timeline-type">
+
+                  {event.eventType}
+
+                </span>
+
+              </div>
+
+            </div>
+
+          ))}
+
         </div>
 
-        <div className="timeline-item">
-          <div className="timeline-date">Mar 2026</div>
-
-          <div className="timeline-content">
-            <h3>Machine Learning Workshop</h3>
-            <p>Practical AI training for developers.</p>
-          </div>
-        </div>
-
-        <div className="timeline-item">
-          <div className="timeline-date">Jun 2026</div>
-
-          <div className="timeline-content">
-            <h3>Global AI Conference</h3>
-            <p>International conference on AI innovation.</p>
-          </div>
-        </div>
-
-        <div className="timeline-item">
-          <div className="timeline-date">Oct 2026</div>
-
-          <div className="timeline-content">
-            <h3>Startup Networking Event</h3>
-            <p>Meet investors and technology founders.</p>
-          </div>
-        </div>
-
-      </div>
+      )}
 
     </section>
+
   );
+
 }
 
 export default Timeline;

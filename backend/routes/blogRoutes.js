@@ -1,25 +1,28 @@
-const express = require("express");
+const mongoose = require("mongoose");
 
-const router = express.Router();
+const gallerySchema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+    },
 
-const {
-    createBlog,
-    getBlogs,
-    getBlogById,
-    updateBlog,
-    deleteBlog,
-} = require("../controllers/blogController");
+    image: {
+      type: String,
+      required: true,
+    },
 
-const {
-    protect,
-} = require("../middleware/authMiddleware");
+    category: {
+      type: String,
+      default: "General",
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
-router.get("/", getBlogs);
-router.get("/:id", getBlogById);
-
-router.post("/", protect, createBlog);
-router.put("/:id", protect, updateBlog);
-router.delete("/:id", protect, deleteBlog);
-
-module.exports = router;
-
+module.exports = mongoose.model(
+  "Gallery",
+  gallerySchema
+);

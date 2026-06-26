@@ -23,7 +23,5 @@ const gallerySchema = new mongoose.Schema(
 );
 
 module.exports =
-  mongoose.model(
-    "Gallery",
-    gallerySchema
-  );
+  mongoose.models.Gallery ||
+  mongoose.model("Gallery", gallerySchema);
