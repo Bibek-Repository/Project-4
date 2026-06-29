@@ -5,7 +5,9 @@ const router = express.Router();
 const {
     createContact,
     getContacts,
-    deleteContact
+    deleteContact,
+    markAsViewed
+
 } = require(
     "../controllers/contactController"
 );
@@ -28,6 +30,11 @@ router.delete(
     "/:id",
     protect,
     deleteContact
+);
+router.patch(
+  "/:id/view",
+  protect,
+  markAsViewed
 );
 
 module.exports = router;

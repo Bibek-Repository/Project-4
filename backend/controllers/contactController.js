@@ -9,40 +9,47 @@ const createContact = async (req, res) => {
   try {
 
     const {
-      name,
-      email,
-      company,
-      phone,
-      service,
-      message,
-    } = req.body;
+  name,
+  email,
+  phone,
+  company,
+  country,
+  jobTitle,
+  jobDetails,
+} = req.body;
 
     // Basic validation
 
-    if (!name || !email || !message) {
+    if (
+  !name ||
+  !email ||
+  !phone ||
+  !company ||
+  !country ||
+  !jobTitle ||
+  !jobDetails
+) {
+  return res.status(400).json({
+    success: false,
+    message: "All fields are required.",
+  });
+}
 
-      return res.status(400).json({
-        message: "Name, email and message are required.",
-      });
-
-    }
-
-    const enquiry = await Contact.create({
-
-      name,
-      email,
-      company,
-      phone,
-      service,
-      message,
-
-    });
+    const contact = await Contact.create({
+  name,
+  email,
+  phone,
+  company,
+  country,
+  jobTitle,
+  jobDetails,
+});
 
     res.status(201).json({
-      success: true,
-      message: "Enquiry submitted successfully.",
-      enquiry,
-    });
+  success: true,
+  message: "Enquiry submitted successfully.",
+  contact,
+});
 
   } catch (error) {
 
@@ -127,10 +134,36 @@ const deleteContact = async (req, res) => {
 
 };
 
-module.exports = {
+const markAsViewed = async (req, res) => {
+  try {
+    const contact = await Contact.findById(req.params.id);
 
+    if (!contact) {
+      return res.status(404).json({
+        success: false,
+        message: "Enquiry not found.",
+      });
+    }
+
+    contact.status = "Viewed";
+
+    await contact.save();
+
+    res.status(200).json({
+      success: true,
+      contact,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+module.exports = {
   createContact,
   getContacts,
   deleteContact,
-
+  markAsViewed,
 };

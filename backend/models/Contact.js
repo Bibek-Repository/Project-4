@@ -1,50 +1,54 @@
 const mongoose = require("mongoose");
 
-const contactSchema = new mongoose.Schema(
+const ContactSchema = new mongoose.Schema(
   {
     name: {
       type: String,
       required: true,
-      trim: true,
     },
 
     email: {
       type: String,
       required: true,
-      trim: true,
-      lowercase: true,
-    },
-
-    company: {
-      type: String,
-      default: "",
-      trim: true,
     },
 
     phone: {
       type: String,
-      default: "",
-      trim: true,
+      required: true,
     },
 
-    service: {
-      type: String,
-      default: "",
-      trim: true,
-    },
-
-    message: {
+    company: {
       type: String,
       required: true,
-      trim: true,
+    },
+
+    country: {
+      type: String,
+      required: true,
+    },
+
+    jobTitle: {
+      type: String,
+      required: true,
+    },
+
+    jobDetails: {
+      type: String,
+      required: true,
+    },
+
+    status: {
+      type: String,
+      enum: ["New", "Viewed"],
+      default: "New",
     },
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 module.exports = mongoose.model(
   "Contact",
-  contactSchema
+  ContactSchema
 );

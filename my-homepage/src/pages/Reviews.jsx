@@ -7,10 +7,11 @@ import {
   FaUsers,
   FaChartLine,
 } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const reviews = [
   {
-    name: "Aarav Sharma",
+    name: "Jack Mooneyham",
     position: "Chief Executive Officer",
     company: "HealthFirst",
     industry: "Healthcare",
@@ -26,7 +27,7 @@ const reviews = [
       "The predictive analytics solution developed by AI SOLUTIONS gives our team incredible visibility into business trends. We now make faster, data-driven decisions with much greater confidence.",
   },
   {
-    name: "Rohan Kapoor",
+    name: "Mark Singh",
     position: "Chief Operating Officer",
     company: "StayPro",
     industry: "Hospitality",
@@ -42,7 +43,7 @@ const reviews = [
       "Working with AI SOLUTIONS has been one of our best technology investments. Their intelligent workflow automation streamlined internal processes and significantly boosted productivity.",
   },
   {
-    name: "Mohit Gupta",
+    name: "David Dawson",
     position: "Chief Technology Officer",
     company: "InspectAI",
     industry: "Manufacturing",
@@ -220,15 +221,13 @@ function Reviews() {
 
         <div className="cta-buttons">
 
-          <button className="primary-btn">
-            Book a Consultation
-            <FaArrowRight />
-          </button>
+          <Link to="/Contact" className="cta-button">
+        Book a Consultation
+      </Link>
 
-          <button className="secondary-btn">
-            Contact Us
-            <FaArrowRight />
-          </button>
+          <Link to="/Contact" className="cta-button">
+        Contact Us
+      </Link>
 
         </div>
 

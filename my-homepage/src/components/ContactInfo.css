@@ -1,44 +1,162 @@
 .contact-info {
-  padding: 50px 10%;
-  background: white;
+  padding: 80px 8%;
+  background: #ffffff;
 }
 
 .contact-info-grid {
   display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 25px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
 }
 
 .info-card {
-  background: #cfe2d9;
-  padding: 35px;
-  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px 30px;
   text-align: center;
-  transition: 0.3s;
-  border: 1px solid transparent;
+
+  text-decoration: none;
+  color: inherit;
+
+  background: linear-gradient(145deg, #eaf8f2, #d8eee4);
+  border: 1px solid rgba(14, 165, 233, 0.15);
+  border-radius: 20px;
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+
+  transition: all 0.35s ease;
+  cursor: pointer;
 }
 
 .info-card:hover {
-  transform: translateY(-8px);
-  border-color: #38bdf8;
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(14, 165, 233, 0.2);
+  border-color: #0ea5e9;
+}
+
+.info-card:active {
+  transform: scale(0.98);
+}
+
+.info-card:visited {
+  color: inherit;
 }
 
 .info-icon {
-  font-size: 4.5rem;
-  margin-bottom: 15px;
+  width: 85px;
+  height: 85px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 2.8rem;
+
+  background: #ffffff;
+  border-radius: 50%;
+
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+
+  margin-bottom: 25px;
+
+  transition: all 0.35s ease;
+}
+
+.info-card:hover .info-icon {
+  transform: rotate(10deg) scale(1.1);
 }
 
 .info-card h3 {
-  color: black;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+
+  font-size: 1.35rem;
+  font-weight: 700;
+
+  color: #0f172a;
 }
 
 .info-card p {
-  color: black;
+  font-size: 1rem;
+  color: #475569;
+  line-height: 1.6;
+  word-break: break-word;
 }
 
-@media(max-width:768px) {
+/* ---------- Tablet ---------- */
+
+@media (max-width: 992px) {
+  .contact-info {
+    padding: 70px 6%;
+  }
+
+  .contact-info-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+
+  .info-card {
+    padding: 35px 25px;
+  }
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 768px) {
+  .contact-info {
+    padding: 60px 5%;
+  }
+
   .contact-info-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .info-card {
+    padding: 30px 22px;
+  }
+
+  .info-icon {
+    width: 75px;
+    height: 75px;
+    font-size: 2.4rem;
+  }
+
+  .info-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .info-card p {
+    font-size: 0.95rem;
+  }
+}
+
+/* ---------- Small Phones ---------- */
+
+@media (max-width: 480px) {
+  .contact-info {
+    padding: 50px 20px;
+  }
+
+  .info-card {
+    padding: 25px 20px;
+    border-radius: 18px;
+  }
+
+  .info-icon {
+    width: 68px;
+    height: 68px;
+    font-size: 2.2rem;
+    margin-bottom: 18px;
+  }
+
+  .info-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .info-card p {
+    font-size: 0.9rem;
   }
 }

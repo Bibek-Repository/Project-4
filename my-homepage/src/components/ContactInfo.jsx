@@ -5,29 +5,38 @@ function ContactInfo() {
     {
       icon: "📧",
       title: "Email Us",
-      text: "hello@overviewai.com"
+      text: "info@aisolutions.com",
+      link: "mailto:info@aisolutions.com",
     },
     {
       icon: "📱",
       title: "Call Us",
-      text: "+44 123 456 789"
+      text: "+44 123 456 789",
+      link: "tel:+44123456789",
     },
     {
       icon: "📍",
       title: "Visit Us",
-      text: "Sunderland, United Kingdom"
-    }
+      text: "Sunderland, United Kingdom",
+      link: "https://www.google.com/maps/search/?api=1&query=Sunderland,United+Kingdom",
+    },
   ];
 
   return (
     <section className="contact-info">
       <div className="contact-info-grid">
         {info.map((item, index) => (
-          <div className="info-card" key={index}>
+          <a
+            key={index}
+            href={item.link}
+            className="info-card"
+            target={item.title === "Visit Us" ? "_blank" : "_self"}
+            rel="noopener noreferrer"
+          >
             <div className="info-icon">{item.icon}</div>
             <h3>{item.title}</h3>
             <p>{item.text}</p>
-          </div>
+          </a>
         ))}
       </div>
     </section>

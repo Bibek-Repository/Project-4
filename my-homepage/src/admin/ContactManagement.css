@@ -578,3 +578,13 @@
   }
 
 }
+
+.status-new {
+  color: #f59e0b;
+  font-weight: 600;
+}
+
+.status-viewed {
+  color: #10b981;
+  font-weight: 600;
+}
