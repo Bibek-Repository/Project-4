@@ -346,9 +346,9 @@ function GalleryManagement() {
 
       {(showModal || editingImage) && (
 
-        <div className="modal-overlay">
+        <div className="gallery-modal-overlay">
 
-          <div className="modal-content">
+          <div className="gallery-modal-content">
 
             <h2>
               {editingImage

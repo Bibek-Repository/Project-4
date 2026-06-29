@@ -1,6 +1,8 @@
 import "./CTA.css";
+import { useNavigate } from "react-router-dom";
 
 function CTA() {
+  const navigate = useNavigate();
   return (
     <section className="cta-section">
       <div className="cta-container">
@@ -11,8 +13,15 @@ function CTA() {
         </p>
 
         <div className="cta-buttons">
-          <button className="cta-primary">Get Free Consultation</button>
-          <button className="cta-secondary">View Our Services</button>
+          <button className="primary-btn" onClick={() => navigate("/contact")}>
+            Get Free Consultation
+          </button>
+          <button
+              className="secondary-btn"
+              onClick={() => navigate("/FinalServices")}
+            >
+              View Our Services
+            </button>
         </div>
       </div>
     </section>

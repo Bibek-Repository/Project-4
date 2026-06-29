@@ -14,6 +14,8 @@ const {
     "../middleware/authMiddleware"
 );
 
+console.log(getDashboardStats);
+
 router.get(
     "/",
     protect,

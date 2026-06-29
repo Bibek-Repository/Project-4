@@ -1,83 +1,136 @@
 const Contact = require("../models/Contact");
 
+// ======================
+// Create Contact
+// ======================
+
 const createContact = async (req, res) => {
 
-    try{
-        const {
-            name,
-            email,
-            phone,
-            subject,
-            message
-        } = req.body;
+  try {
 
-        const enquiry =
-            await Contact.create({
-                name,
-                email,
-                phone,
-                subject,
-                message
-            });
+    const {
+      name,
+      email,
+      company,
+      phone,
+      service,
+      message,
+    } = req.body;
 
-            res.status(201).json(enquiry);
+    // Basic validation
 
-} catch (error) {
+    if (!name || !email || !message) {
+
+      return res.status(400).json({
+        message: "Name, email and message are required.",
+      });
+
+    }
+
+    const enquiry = await Contact.create({
+
+      name,
+      email,
+      company,
+      phone,
+      service,
+      message,
+
+    });
+
+    res.status(201).json({
+      success: true,
+      message: "Enquiry submitted successfully.",
+      enquiry,
+    });
+
+  } catch (error) {
 
     res.status(500).json({
-        message: error.message
+
+      success: false,
+      message: error.message,
+
     });
-}
+
+  }
+
 };
+
+// ======================
+// Get Contacts
+// ======================
 
 const getContacts = async (req, res) => {
 
-    try {
-        const contacts =
-            await Contact.find()
-            .sort({ createdAt: -1});
+  try {
 
-        res.json(contacts);
-    } catch (error) {
+    const contacts = await Contact.find()
+      .sort({ createdAt: -1 });
 
-        res.status(500).json({
-            message: error.message
-        });
-    }
+    res.status(200).json(contacts);
+
+  } catch (error) {
+
+    res.status(500).json({
+
+      success: false,
+      message: error.message,
+
+    });
+
+  }
+
 };
+
+// ======================
+// Delete Contact
+// ======================
 
 const deleteContact = async (req, res) => {
 
-    try {
+  try {
 
-        const contact = 
-            await Contact.findById(
-                req.params.id
-            );
-        
-        if (!contact) {
+    const contact = await Contact.findById(
+      req.params.id
+    );
 
-            return res.status(404).json({
-                message: "Enquiry not found"
-            });
-        }
+    if (!contact) {
 
-        await contact.deleteOne();
+      return res.status(404).json({
 
-        res.json({
-            message:
-                "Enquiry deleted successfully"
-        });
-    } catch (error) {
+        message: "Enquiry not found",
 
-        res.status(500).json({
-            message: error.message
-        });
+      });
+
     }
+
+    await contact.deleteOne();
+
+    res.status(200).json({
+
+      success: true,
+      message: "Enquiry deleted successfully.",
+
+    });
+
+  } catch (error) {
+
+    res.status(500).json({
+
+      success: false,
+      message: error.message,
+
+    });
+
+  }
+
 };
 
 module.exports = {
-    createContact,
-    getContacts,
-    deleteContact
+
+  createContact,
+  getContacts,
+  deleteContact,
+
 };

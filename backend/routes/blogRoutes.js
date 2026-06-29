@@ -1,28 +1,31 @@
-const mongoose = require("mongoose");
+const express = require("express");
+const router = express.Router();
 
-const gallerySchema = new mongoose.Schema(
-  {
-    title: {
-      type: String,
-      required: true,
-    },
+const {
+  createBlog,
+  getBlogs,
+  getBlogById,
+  getBlogBySlug,
+  updateBlog,
+  deleteBlog,
+} = require("../controllers/blogController");
 
-    image: {
-      type: String,
-      required: true,
-    },
+// GET ALL BLOGS
+router.get("/", getBlogs);
 
-    category: {
-      type: String,
-      default: "General",
-    },
-  },
-  {
-    timestamps: true,
-  }
-);
+// CREATE BLOG
+router.post("/", createBlog);
 
-module.exports = mongoose.model(
-  "Gallery",
-  gallerySchema
-);
+// GET BLOG BY SLUG
+router.get("/slug/:slug", getBlogBySlug);
+
+// GET BLOG BY ID
+router.get("/:id", getBlogById);
+
+// UPDATE BLOG
+router.put("/:id", updateBlog);
+
+// DELETE BLOG
+router.delete("/:id", deleteBlog);
+
+module.exports = router;

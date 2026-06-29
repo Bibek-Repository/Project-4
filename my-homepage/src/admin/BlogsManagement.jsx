@@ -1,30 +1,146 @@
+import { useState, useEffect } from "react";
 import AdminLayout from "../components/AdminLayout";
 import "./BlogsManagement.css";
-import { useEffect, useState } from "react";
+
 
 function BlogsManagement() {
+  const token = localStorage.getItem("token");
+
+  // ============================
+  // States
+  // ============================
+
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const [showModal, setShowModal] = useState(false);
   const [editingBlog, setEditingBlog] = useState(null);
+
   const [selectedImage, setSelectedImage] = useState(null);
 
-  const token = localStorage.getItem("token");
-
-  const [newBlog, setNewBlog] = useState({
+  const initialForm = {
     title: "",
     excerpt: "",
+    content: "",
     category: "Technology",
     featured: false,
-  });
+    image: "",
+  };
+
+  const [newBlog, setNewBlog] = useState(initialForm);
+
+  // ============================
+  // Load Blogs
+  // ============================
 
   useEffect(() => {
     fetchBlogs();
-  }, [token]);
+  }, []);
+
+  // ============================
+  // Form Handlers
+  // ============================
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+
+    setNewBlog((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+  };
+
+  const handleImageChange = (e) => {
+    if (e.target.files.length > 0) {
+      setSelectedImage(e.target.files[0]);
+    }
+  };
+
+  // ============================
+  // Reset Form
+  // ============================
+
+  const resetForm = () => {
+    setNewBlog(initialForm);
+    setSelectedImage(null);
+    setEditingBlog(null);
+  };
+
+  // ============================
+  // Modal Controls
+  // ============================
+
+  const openAddModal = () => {
+    resetForm();
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    resetForm();
+    setShowModal(false);
+  };
+
+  // ============================
+  // Edit Existing Blog
+  // ============================
+
+  const handleEdit = (blog) => {
+    setEditingBlog(blog);
+
+    setNewBlog({
+      title: blog.title || "",
+      excerpt: blog.excerpt || "",
+      content: blog.content || "",
+      category: blog.category || "Technology",
+      featured: blog.featured || false,
+      image: blog.image || "",
+    });
+
+    setSelectedImage(null);
+    setShowModal(true);
+  };
+
+  // ============================
+  // Upload Image
+  // ============================
+
+  const uploadImage = async () => {
+    if (!selectedImage) {
+      return editingBlog?.image || "";
+    }
+
+    const formData = new FormData();
+
+    formData.append("image", selectedImage);
+
+    const response = await fetch(
+      "http://localhost:5000/api/upload",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: formData,
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Image upload failed.");
+    }
+
+    const data = await response.json();
+
+    return data.imageUrl;
+  };
+
+    // ============================
+  // Fetch Blogs
+  // ============================
 
   const fetchBlogs = async () => {
     try {
+      setLoading(true);
+
       const response = await fetch(
         "http://localhost:5000/api/blogs",
         {
@@ -35,82 +151,29 @@ function BlogsManagement() {
       );
 
       if (!response.ok) {
-        throw new Error("Failed to fetch blogs");
+        throw new Error("Failed to fetch blogs.");
       }
 
       const data = await response.json();
+
       setBlogs(data);
     } catch (error) {
       console.error(error);
+      alert(error.message);
     } finally {
       setLoading(false);
     }
   };
 
-  const closeModal = () => {
-    setShowModal(false);
-    setEditingBlog(null);
-    setSelectedImage(null);
-
-    setNewBlog({
-      title: "",
-      excerpt: "",
-      category: "Technology",
-      featured: false,
-    });
-  };
-
-  const handleEdit = (blog) => {
-    setEditingBlog(blog);
-
-    setNewBlog({
-      title: blog.title || "",
-      excerpt: blog.excerpt || "",
-      category: blog.category || "Technology",
-      featured: blog.featured || false,
-    });
-
-    setSelectedImage(null);
-    setShowModal(true);
-  };
+  // ============================
+  // Create Blog
+  // ============================
 
   const createBlog = async (e) => {
     e.preventDefault();
 
     try {
-      let imageUrl = "";
-
-      if (selectedImage) {
-        const formData = new FormData();
-
-        formData.append(
-          "image",
-          selectedImage
-        );
-
-        const uploadResponse = await fetch(
-          "http://localhost:5000/api/upload",
-          {
-            method: "POST",
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-            body: formData,
-          }
-        );
-
-        if (!uploadResponse.ok) {
-          throw new Error(
-            "Image upload failed"
-          );
-        }
-
-        const uploadData =
-          await uploadResponse.json();
-
-        imageUrl =
-          uploadData.imageUrl;
-      }
+      const imageUrl = await uploadImage();
 
       const response = await fetch(
         "http://localhost:5000/api/blogs",
@@ -118,10 +181,8 @@ function BlogsManagement() {
           method: "POST",
 
           headers: {
-            "Content-Type":
-              "application/json",
-            Authorization:
-              `Bearer ${token}`,
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
           },
 
           body: JSON.stringify({
@@ -132,66 +193,33 @@ function BlogsManagement() {
       );
 
       if (!response.ok) {
-        throw new Error(
-          "Failed to create blog"
-        );
+        throw new Error("Failed to create blog.");
       }
 
-      const data =
-        await response.json();
+      const createdBlog = await response.json();
 
-      setBlogs((prev) => [
-        data,
-        ...prev,
-      ]);
+      setBlogs((prev) => [createdBlog, ...prev]);
 
       closeModal();
+
+      alert("Blog created successfully.");
     } catch (error) {
       console.error(error);
+      alert(error.message);
     }
   };
+
+  // ============================
+  // Update Blog
+  // ============================
 
   const updateBlog = async (e) => {
     e.preventDefault();
 
+    if (!editingBlog) return;
+
     try {
-      let imageUrl =
-        editingBlog?.image || "";
-
-      if (selectedImage) {
-        const formData =
-          new FormData();
-
-        formData.append(
-          "image",
-          selectedImage
-        );
-
-        const uploadResponse =
-          await fetch(
-            "http://localhost:5000/api/upload",
-            {
-              method: "POST",
-              headers: {
-                Authorization:
-                  `Bearer ${token}`,
-              },
-              body: formData,
-            }
-          );
-
-        if (!uploadResponse.ok) {
-          throw new Error(
-            "Image upload failed"
-          );
-        }
-
-        const uploadData =
-          await uploadResponse.json();
-
-        imageUrl =
-          uploadData.imageUrl;
-      }
+      const imageUrl = await uploadImage();
 
       const response = await fetch(
         `http://localhost:5000/api/blogs/${editingBlog._id}`,
@@ -199,11 +227,8 @@ function BlogsManagement() {
           method: "PUT",
 
           headers: {
-            "Content-Type":
-              "application/json",
-
-            Authorization:
-              `Bearer ${token}`,
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
           },
 
           body: JSON.stringify({
@@ -214,31 +239,33 @@ function BlogsManagement() {
       );
 
       if (!response.ok) {
-        throw new Error(
-          "Failed to update blog"
-        );
+        throw new Error("Failed to update blog.");
       }
 
-      const data =
-        await response.json();
+      const updatedBlog = await response.json();
 
       setBlogs((prev) =>
         prev.map((blog) =>
-          blog._id === data._id
-            ? data
-            : blog
+          blog._id === updatedBlog._id ? updatedBlog : blog
         )
       );
 
       closeModal();
+
+      alert("Blog updated successfully.");
     } catch (error) {
       console.error(error);
+      alert(error.message);
     }
   };
 
+  // ============================
+  // Delete Blog
+  // ============================
+
   const deleteBlog = async (id) => {
     const confirmDelete = window.confirm(
-      "Delete this blog?"
+      "Are you sure you want to delete this blog?"
     );
 
     if (!confirmDelete) return;
@@ -248,126 +275,249 @@ function BlogsManagement() {
         `http://localhost:5000/api/blogs/${id}`,
         {
           method: "DELETE",
+
           headers: {
-            Authorization:
-              `Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
           },
         }
       );
 
       if (!response.ok) {
-        throw new Error(
-          "Failed to delete blog"
-        );
+        throw new Error("Failed to delete blog.");
       }
 
       setBlogs((prev) =>
-        prev.filter(
-          (blog) => blog._id !== id
-        )
+        prev.filter((blog) => blog._id !== id)
       );
+
+      alert("Blog deleted successfully.");
     } catch (error) {
       console.error(error);
+      alert(error.message);
     }
   };
+
+  // ============================
+  // Loading Screen
+  // ============================
 
   if (loading) {
     return (
       <AdminLayout>
-        <h2>Loading blogs...</h2>
+        <div className="blogs-loading">
+          <h2>Loading blogs...</h2>
+        </div>
       </AdminLayout>
     );
   }
 
-  return (
+    return (
     <AdminLayout>
+
       <div className="blogs-header">
-        <h1>Blogs Management</h1>
+
+        <div>
+          <h1>Blogs Management</h1>
+          <p>Manage, edit and publish blog articles.</p>
+        </div>
 
         <button
           className="add-blog-btn"
-          onClick={() => {
-            closeModal();
-            setShowModal(true);
-          }}
+          onClick={openAddModal}
         >
           + Add Blog
         </button>
+
       </div>
 
-      <div className="blogs-table-container">
-        <table className="blogs-table">
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Category</th>
-              <th>Status</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
+      {blogs.length === 0 ? (
 
-          <tbody>
-            {blogs.map((blog) => (
-              <tr key={blog._id}>
-                <td>{blog.title}</td>
+        <div className="empty-state">
 
-                <td>{blog.category}</td>
+          <h2>No Blogs Available</h2>
 
-                <td>
-                  <span
-                    className={
-                      blog.featured
-                        ? "published"
-                        : "draft"
-                    }
-                  >
-                    {blog.featured
-                      ? "Featured"
-                      : "Standard"}
-                  </span>
-                </td>
+          <p>
+            Click the <strong>Add Blog</strong> button to create your first
+            blog post.
+          </p>
 
-                <td>
-                  <button
-                    className="edit-btn"
-                    onClick={() =>
-                      handleEdit(blog)
-                    }
-                  >
-                    Edit
-                  </button>
+        </div>
 
-                  <button
-                    className="delete-btn"
-                    onClick={() =>
-                      deleteBlog(blog._id)
-                    }
-                  >
-                    Delete
-                  </button>
-                </td>
+      ) : (
+
+        <div className="blogs-table-container">
+
+          <table className="blogs-table">
+
+            <thead>
+
+              <tr>
+
+                <th>Image</th>
+
+                <th>Title</th>
+
+                <th>Category</th>
+
+                <th>Featured</th>
+
+                <th>Date</th>
+
+                <th>Actions</th>
+
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+
+            </thead>
+
+            <tbody>
+
+              {blogs.map((blog) => (
+
+                <tr key={blog._id}>
+
+                  <td>
+
+                    {blog.image ? (
+
+                      <img
+                        src={blog.image}
+                        alt={blog.title}
+                        className="blog-thumbnail"
+                      />
+
+                    ) : (
+
+                      <div className="no-image">
+
+                        No Image
+
+                      </div>
+
+                    )}
+
+                  </td>
+
+                  <td>
+
+                    <div className="blog-title">
+
+                      <strong>
+
+                        {blog.title}
+
+                      </strong>
+
+                      <small>
+
+                        {blog.excerpt
+                          ? blog.excerpt.length > 90
+                            ? blog.excerpt.substring(0, 90) + "..."
+                            : blog.excerpt
+                          : "No excerpt"}
+
+                      </small>
+
+                    </div>
+
+                  </td>
+
+                  <td>
+
+                    <span className="category-badge">
+
+                      {blog.category}
+
+                    </span>
+
+                  </td>
+
+                  <td>
+
+                    {blog.featured ? (
+
+                      <span className="published">
+
+                        Featured
+
+                      </span>
+
+                    ) : (
+
+                      <span className="draft">
+
+                        Standard
+
+                      </span>
+
+                    )}
+
+                  </td>
+
+                  <td>
+
+                    {blog.createdAt
+                      ? new Date(
+                          blog.createdAt
+                        ).toLocaleDateString()
+                      : "-"}
+
+                  </td>
+
+                  <td>
+
+                    <div className="action-buttons">
+
+                      <button
+                        className="edit-btn"
+                        onClick={() =>
+                          handleEdit(blog)
+                        }
+                      >
+                        Edit
+                      </button>
+
+                      <button
+                        className="delete-btn"
+                        onClick={() =>
+                          deleteBlog(blog._id)
+                        }
+                      >
+                        Delete
+                      </button>
+
+                    </div>
+
+                  </td>
+
+                </tr>
+
+              ))}
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      )}
 
       {showModal && (
-        <div className="modal-overlay">
-          <div className="modal-content">
-            <h2>
-              {editingBlog
-                ? "Edit Blog"
-                : "Add Blog"}
-            </h2>
+
+                <div className="blogs-modal-overlay">
+
+          <div className="blogs-modal-content">
 
             <button
-              type="button"
               className="close-btn"
+              type="button"
               onClick={closeModal}
             >
               ×
             </button>
+
+            <h2>
+              {editingBlog ? "Edit Blog" : "Add New Blog"}
+            </h2>
 
             <form
               onSubmit={
@@ -376,85 +526,160 @@ function BlogsManagement() {
                   : createBlog
               }
             >
-              <input
-                type="text"
-                placeholder="Blog Title"
-                value={newBlog.title}
-                onChange={(e) =>
-                  setNewBlog({
-                    ...newBlog,
-                    title:
-                      e.target.value,
-                  })
-                }
-                required
-              />
 
-              <textarea
-                placeholder="Excerpt"
-                value={newBlog.excerpt}
-                onChange={(e) =>
-                  setNewBlog({
-                    ...newBlog,
-                    excerpt:
-                      e.target.value,
-                  })
-                }
-                required
-              />
+              {/* Blog Title */}
 
-              <input
-                type="text"
-                placeholder="Category"
-                value={newBlog.category}
-                onChange={(e) =>
-                  setNewBlog({
-                    ...newBlog,
-                    category:
-                      e.target.value,
-                  })
-                }
-              />
+              <div className="form-group">
 
-              <label>
+                <label>Blog Title</label>
+
                 <input
-                  type="checkbox"
-                  checked={
-                    newBlog.featured
-                  }
-                  onChange={(e) =>
-                    setNewBlog({
-                      ...newBlog,
-                      featured:
-                        e.target.checked,
-                    })
-                  }
+                  type="text"
+                  name="title"
+                  value={newBlog.title}
+                  onChange={handleChange}
+                  required
                 />
-                Featured Blog
-              </label>
 
-              <input
-                type="file"
-                accept="image/*"
-                onChange={(e) =>
-                  setSelectedImage(
-                    e.target.files[0]
-                  )
-                }
-              />
+              </div>
 
-              <button type="submit">
-                {editingBlog
-                  ? "Update Blog"
-                  : "Save Blog"}
-              </button>
+              {/* Excerpt */}
+
+              <div className="form-group">
+
+                <label>Excerpt</label>
+
+                <textarea
+                  rows="3"
+                  name="excerpt"
+                  value={newBlog.excerpt}
+                  onChange={handleChange}
+                  required
+                />
+
+              </div>
+
+              {/* Content */}
+
+              <div className="form-group">
+
+                <label>Content</label>
+
+                <textarea
+                  rows="12"
+                  name="content"
+                  value={newBlog.content}
+                  onChange={handleChange}
+                  placeholder="Write the complete blog article here..."
+                  required
+                />
+
+              </div>
+
+              
+
+             
+
+              <div className="form-group">
+
+                <label>Category</label>
+
+                <input
+                  type="text"
+                  name="category"
+                  value={newBlog.category}
+                  onChange={handleChange}
+                />
+
+              </div>
+
+              {/* Featured */}
+
+              <div className="form-group checkbox-group">
+
+                <label>
+
+                  <input
+                    type="checkbox"
+                    name="featured"
+                    checked={newBlog.featured}
+                    onChange={handleChange}
+                  />
+
+                  Featured Blog
+
+                </label>
+
+              </div>
+
+              {/* Image Upload */}
+
+              <div className="form-group">
+
+                <label>Blog Image</label>
+
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageChange}
+                />
+
+              </div>
+
+              {/* Preview */}
+
+              {(selectedImage || newBlog.image) && (
+
+                <div className="image-preview">
+
+                  <img
+                    src={
+                      selectedImage
+                        ? URL.createObjectURL(selectedImage)
+                        : newBlog.image
+                    }
+                    alt="Preview"
+                  />
+
+                </div>
+
+              )}
+
+              {/* Buttons */}
+
+              <div className="modal-buttons">
+
+                <button
+                  type="button"
+                  className="cancel-btn"
+                  onClick={closeModal}
+                >
+                  Cancel
+                </button>
+
+                <button
+                  type="submit"
+                  className="save-btn"
+                >
+                  {editingBlog
+                    ? "Update Blog"
+                    : "Create Blog"}
+                </button>
+
+              </div>
+
             </form>
+
           </div>
+
         </div>
+
       )}
+
     </AdminLayout>
+
   );
+
 }
 
 export default BlogsManagement;
-

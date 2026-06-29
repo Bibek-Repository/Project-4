@@ -1,5 +1,6 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 
+
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
@@ -12,6 +13,7 @@ import Events from "./pages/Events";
 import FinalServices from "./pages/FinalServices";
 import ProtectedRoute from "./components/ProtectedRoute";
 import GalleryManagement from "./admin/GalleryManagement";
+import ScrollToTop from "./components/ScrollToTop";
 
 import Login from "./admin/Login";
 import Dashboard from "./admin/Dashboard";
@@ -23,6 +25,8 @@ import ContactManagement from "./admin/ContactManagement";
 import SiteSettings from "./admin/SiteSettings";
 import ChangePassword from "./admin/ChangePassword";
 
+import BlogDetails from "./pages/BlogDetails";
+
 function App() {
   const location = useLocation();
 
@@ -31,7 +35,7 @@ function App() {
   return (
     <>
       {!isAdminPage && <Navbar />}
-
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/About" element={<About />} />
@@ -59,7 +63,11 @@ function App() {
                                                   <GalleryManagement />
                                                 </ProtectedRoute>
                                               }
-/>
+                                              />
+        <Route
+          path="/blog/:slug"
+          element={<BlogDetails />}
+        />
       </Routes>
 
       {!isAdminPage && <Footer />}

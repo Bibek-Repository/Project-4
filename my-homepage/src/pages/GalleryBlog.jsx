@@ -1,5 +1,6 @@
 import "./GalleryBlog.css";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function GalleryBlog() {
 
@@ -80,39 +81,23 @@ function GalleryBlog() {
 
   return (
     <div className="gallery-blog-page">
-
       {/* Gallery Section */}
 
       <section className="gallery-section">
-
         <div className="section-header">
           <h1>Photo Gallery</h1>
 
-          <p>
-            Moments from our AI projects,
-            events and innovations
-          </p>
+          <p>Moments from our AI projects, events and innovations</p>
         </div>
 
         <div className="gallery-grid">
-
           {loadingGallery ? (
-
             <p>Loading gallery...</p>
-
           ) : gallery.length === 0 ? (
-
             <p>No gallery images found.</p>
-
           ) : (
-
             gallery.map((image) => (
-
-              <div
-                className="gallery-card"
-                key={image._id}
-              >
-
+              <div className="gallery-card" key={image._id}>
                 <img
                   src={`http://localhost:5000${image.image}`}
                   alt={image.title}
@@ -120,103 +105,61 @@ function GalleryBlog() {
                 />
 
                 <div className="gallery-content">
-
                   <h3>{image.title}</h3>
 
                   <p>{image.category}</p>
-
                 </div>
-
               </div>
-
             ))
-
           )}
-
         </div>
-
       </section>
 
       {/* Blog Section */}
 
       <section className="blog-section">
-
         <div className="section-header">
-
           <h1>Latest Blogs</h1>
 
-          <p>
-            Insights, updates and AI
-            knowledge from our team
-          </p>
-
+          <p>Insights, updates and AI knowledge from our team</p>
         </div>
 
         <div className="blog-grid">
-
           {loadingBlogs ? (
-
             <p>Loading blogs...</p>
-
           ) : blogs.length === 0 ? (
-
             <p>No blogs found.</p>
-
           ) : (
-
             blogs.map((blog) => (
-
-              <div
-                className="blog-card"
-                key={blog._id}
-              >
-
+              <div className="blog-card" key={blog._id}>
                 {blog.image && (
-
                   <img
                     src={`http://localhost:5000${blog.image}`}
                     alt={blog.title}
                     className="blog-image"
                   />
-
                 )}
 
                 <div className="blog-content">
-
                   <h3>{blog.title}</h3>
 
                   <p>{blog.excerpt}</p>
 
                   <div className="blog-meta">
+                    <span>{blog.category}</span>
 
-                    <span>
-                      {blog.category}
-                    </span>
-
-                    <span>
-                      {new Date(
-                        blog.createdAt
-                      ).toLocaleDateString()}
-                    </span>
-
+                    <span>{new Date(blog.createdAt).toLocaleDateString()}</span>
                   </div>
 
-                  <button className="read-more-btn">
-                    Read More
-                  </button>
-
+                  <Link to={`/blog/${blog.slug}`}>
+                    <button className="read-more">Read More →</button>
+                  </Link>
                 </div>
-
               </div>
-
             ))
-
           )}
-
         </div>
-
       </section>
-
     </div>
   );
 }

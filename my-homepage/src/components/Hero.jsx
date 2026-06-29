@@ -1,7 +1,9 @@
 import "./Hero.css";
 import { FaRobot, FaChartLine, FaCode } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 function Hero() {
+  const navigate = useNavigate();
   return (
     <section className="hero">
       <div className="hero-container">
@@ -25,11 +27,17 @@ function Hero() {
           </p>
 
           <div className="hero-buttons">
-            <button className="primary-btn">
+           <button
+              className="primary-btn"
+              onClick={() => navigate("/contact")}
+            >
               Get Free Consultation
             </button>
 
-            <button className="secondary-btn">
+            <button
+              className="secondary-btn"
+              onClick={() => navigate("/FinalServices")}
+            >
               Explore Services
             </button>
           </div>

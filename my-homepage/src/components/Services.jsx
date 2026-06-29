@@ -1,6 +1,15 @@
-
 import { useState } from "react";
 import "./Services.css";
+
+import {
+  FaRobot,
+  FaGlobe,
+  FaMobileAlt,
+  FaCog,
+  FaChartLine,
+  FaCloud,
+  FaArrowRight,
+} from "react-icons/fa";
 
 function Services() {
   const [showAll, setShowAll] = useState(false);
@@ -9,69 +18,100 @@ function Services() {
     {
       title: "AI Virtual Assistant",
       description:
-        "Smart conversational AI to automate customer support, onboarding, and internal workflows.",
-      icon: "🤖",
+        "Smart conversational AI that automates customer support, lead generation, and business operations.",
+      icon: <FaRobot />,
     },
     {
       title: "Web Development",
       description:
-        "Modern, scalable, and responsive web applications using cutting-edge technologies.",
-      icon: "🌐",
+        "Fast, secure, and scalable websites built with modern technologies and best practices.",
+      icon: <FaGlobe />,
     },
-     {
-      title: "Mobile Apps",
+    {
+      title: "Mobile Applications",
       description:
-        "Cross-platform mobile applications for Android and iOS with smooth user experience.",
-      icon: "📱",
+        "Beautiful Android and iOS applications designed for performance and user engagement.",
+      icon: <FaMobileAlt />,
     },
     {
       title: "Automation Solutions",
       description:
-        "Automate repetitive business tasks and improve operational efficiency using AI.",
-      icon: "⚙️",
+        "Eliminate repetitive work using intelligent automation and AI-powered workflows.",
+      icon: <FaCog />,
     },
     {
       title: "Data Analytics",
       description:
-        "Transform raw data into actionable insights using dashboards and AI-driven analytics.",
-      icon: "📊",
+        "Transform business data into meaningful insights through dashboards and predictive analytics.",
+      icon: <FaChartLine />,
     },
     {
       title: "Cloud Solutions",
       description:
-        "Scalable cloud infrastructure, deployment, and management for modern applications.",
-      icon: "☁️",
+        "Reliable cloud infrastructure, DevOps, deployment, and scalable hosting solutions.",
+      icon: <FaCloud />,
     },
   ];
 
-  const visibleServices = showAll ? services : services.slice(0,3);
+  const visibleServices = showAll ? services : services.slice(0, 3);
 
   return (
     <section className="services-section">
+
       <div className="services-container">
-        <h2 className="services-title">Our Services</h2>
-        <p className = "services-subtitle">
-          AI-powered solutions designed to transform your business
-        </p>
+
+        <div className="services-header">
+
+          <span>OUR SERVICES</span>
+
+          <h2>Innovative Digital Solutions</h2>
+
+          <p>
+            We combine Artificial Intelligence, software engineering,
+            cloud computing, and data science to create digital
+            solutions that help businesses grow faster.
+          </p>
+
+        </div>
 
         <div className="services-grid">
-          {visibleServices.map((service, index)=> (
-            <div className="service-card" key={index}>
-              <div className="service-icon">{service.icon}</div>
-              <h3>{service.title}</h3>
-              <p>{service.description}</p>
-              </div>
-          ))}
-        </div>
-      
 
-      <div className="services-btn-wrapper">
-        <button
-          className="toggle-btn"
-          onClick={() => setShowAll(!showAll)}
-        >{showAll ? "View Less" : "View More"}</button>
+          {visibleServices.map((service, index) => (
+
+            <div className="service-card" key={index}>
+
+              <div className="service-icon">
+                {service.icon}
+              </div>
+
+              <h3>{service.title}</h3>
+
+              <p>{service.description}</p>
+
+              <button className="learn-btn">
+                Learn More
+                <FaArrowRight />
+              </button>
+
+            </div>
+
+          ))}
+
+        </div>
+
+        <div className="services-btn-wrapper">
+
+          <button
+            className="toggle-btn"
+            onClick={() => setShowAll(!showAll)}
+          >
+            {showAll ? "View Less" : "View More"}
+          </button>
+
+        </div>
+
       </div>
-      </div>
+
     </section>
   );
 }

@@ -18,6 +18,8 @@ const path = require("path");
 const uploadRoutes = require("./routes/uploadRoutes");
 const galleryRoutes =
   require("./routes/galleryRoutes");
+const siteSettingsRoutes =
+require("./routes/siteSettingsRoutes");
 
 connectDB();
 
@@ -33,6 +35,10 @@ app.use("/api/services", serviceRoutes);
 app.use("/api/blogs", blogRoutes);
 app.use("/api/events", eventRoutes);
 app.use("/api/settings", settingRoutes);
+app.use(
+"/api/settings",
+siteSettingsRoutes
+);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/uploads",
   express.static(
@@ -45,6 +51,7 @@ app.use(
   "/api/gallery",
   galleryRoutes
 );
+
 
 app.get("/", (req, res) => {
   res.send("AI Solutions API Running");

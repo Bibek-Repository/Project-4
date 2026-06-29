@@ -376,9 +376,9 @@ function EventsManagement() {
 
       {(showModal || editingEvent) && (
 
-        <div className="modal-overlay">
+        <div className="events-modal-overlay">
 
-          <div className="modal-content">
+          <div className="events-modal-content">
 
             <h2>
 

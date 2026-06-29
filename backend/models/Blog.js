@@ -17,6 +17,11 @@ const blogSchema = new mongoose.Schema(
             required: true,
         },
 
+        content:{
+            type:String,
+            required:true,
+        },
+
         author: {
             type: String,
             default: "AI Solutions",

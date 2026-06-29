@@ -113,7 +113,7 @@
 
 /* Modal */
 
-.modal-overlay {
+.gallery-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -127,7 +127,7 @@
   padding: 20px;
 }
 
-.modal-content {
+.gallery-modal-content {
   background: white;
   width: 100%;
   max-width: 550px;
@@ -136,12 +136,12 @@
   box-shadow: 0 10px 40px rgba(0,0,0,0.2);
 }
 
-.modal-content h2 {
+.gallery-modal-content h2 {
   margin-bottom: 20px;
   color: #111827;
 }
 
-.modal-content form {
+.gallery-modal-content form {
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -149,9 +149,9 @@
 
 /* Inputs */
 
-.modal-content input,
-.modal-content textarea,
-.modal-content select {
+.gallery-modal-content input,
+.gallery-modal-content textarea,
+.gallery-modal-content select {
   width: 100%;
   padding: 12px 14px;
   border: 1px solid #d1d5db;
@@ -160,15 +160,15 @@
   outline: none;
 }
 
-.modal-content input:focus,
-.modal-content textarea:focus,
-.modal-content select:focus {
+.gallery-modal-content input:focus,
+.gallery-modal-content textarea:focus,
+.gallery-modal-content select:focus {
   border-color: #2563eb;
 }
 
 /* Form Buttons */
 
-.modal-content button[type="submit"] {
+.gallery-modal-content button[type="submit"] {
   background: #2563eb;
   color: white;
   border: none;
@@ -179,11 +179,11 @@
   transition: 0.3s;
 }
 
-.modal-content button[type="submit"]:hover {
+.gallery-modal-content button[type="submit"]:hover {
   background: #1d4ed8;
 }
 
-.modal-content button[type="button"] {
+.gallery-modal-content button[type="button"] {
   background: #e5e7eb;
   color: #111827;
   border: none;
@@ -193,7 +193,7 @@
   transition: 0.3s;
 }
 
-.modal-content button[type="button"]:hover {
+.gallery-modal-content button[type="button"]:hover {
   background: #d1d5db;
 }
 
@@ -233,7 +233,7 @@
     margin-bottom: 6px;
   }
 
-  .modal-content {
+  .gallery-modal-content {
     padding: 20px;
   }
 }
@@ -248,7 +248,7 @@
     min-width: 650px;
   }
 
-  .modal-content {
+  .gallery-modal-content {
     border-radius: 12px;
   }
 }

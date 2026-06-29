@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./BlogPreview.css";
+import { Link } from "react-router-dom";
 
 function BlogPreview() {
 
@@ -41,84 +42,49 @@ function BlogPreview() {
 
   return (
     <section className="blog-section">
-
       <div className="blog-container">
-
-        <h2 className="blog-title">
-          Latest Blogs
-        </h2>
+        <h2 className="blog-title">Latest Blogs</h2>
 
         <p className="blog-subtitle">
           Insights, updates, and knowledge from our AI development team
         </p>
 
         {loading ? (
-
           <p>Loading blogs...</p>
-
         ) : (
-
           <div className="blog-grid">
-
             {blogs.length === 0 ? (
-
               <p>No blogs available.</p>
-
             ) : (
-
               blogs.map((blog) => (
-
-                <div
-                  className="blog-card"
-                  key={blog._id}
-                >
-
+                <div className="blog-card" key={blog._id}>
                   {blog.image && (
-
                     <img
                       src={`http://localhost:5000${blog.image}`}
                       alt={blog.title}
                       className="blog-image"
                     />
-
                   )}
 
                   <span className="blog-date">
-
-                    {new Date(
-                      blog.createdAt
-                    ).toLocaleDateString()}
-
+                    {new Date(blog.createdAt).toLocaleDateString()}
                   </span>
 
-                  <span className="blog-category">
-                    {blog.category}
-                  </span>
+                  <span className="blog-category">{blog.category}</span>
 
-                  <h3>
-                    {blog.title}
-                  </h3>
+                  <h3>{blog.title}</h3>
 
-                  <p>
-                    {blog.excerpt}
-                  </p>
+                  <p>{blog.excerpt}</p>
 
-                  <button className="read-more">
-                    Read More
-                  </button>
-
+                  <Link to={`/blog/${blog.slug}`}>
+                    <button className="read-more">Read More →</button>
+                  </Link>
                 </div>
-
               ))
-
             )}
-
           </div>
-
         )}
-
       </div>
-
     </section>
   );
 }
