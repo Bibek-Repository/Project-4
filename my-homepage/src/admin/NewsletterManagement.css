@@ -1,0 +1,58 @@
+.newsletter-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+.newsletter-header h1{
+    margin:0;
+    color:#0f172a;
+}
+
+.newsletter-header p{
+    margin-top:6px;
+    color:#64748b;
+}
+
+.newsletter-table-container{
+    background:white;
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.newsletter-table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.newsletter-table th{
+    background:#f8fafc;
+    padding:18px;
+    text-align:left;
+    color:#334155;
+}
+
+.newsletter-table td{
+    padding:18px;
+    border-top:1px solid #e2e8f0;
+}
+
+.newsletter-table tr:hover{
+    background:#f8fafc;
+}
+
+.delete-btn{
+    background:#ef4444;
+    color:white;
+    border:none;
+    padding:10px 18px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.delete-btn:hover{
+    background:#dc2626;
+}

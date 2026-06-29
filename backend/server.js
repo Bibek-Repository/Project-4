@@ -16,8 +16,12 @@ const settingRoutes = require("./routes/settingRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
 const path = require("path");
 const uploadRoutes = require("./routes/uploadRoutes");
+const newsletterRoutes = require("./routes/newsletterRoutes");
 const galleryRoutes =
   require("./routes/galleryRoutes");
+const eventRegistrationRoutes = require(
+  "./routes/eventRegistrationRoutes"
+);
 const siteSettingsRoutes =
 require("./routes/siteSettingsRoutes");
 
@@ -35,6 +39,7 @@ app.use("/api/services", serviceRoutes);
 app.use("/api/blogs", blogRoutes);
 app.use("/api/events", eventRoutes);
 app.use("/api/settings", settingRoutes);
+app.use("/api/newsletter", newsletterRoutes);
 app.use(
 "/api/settings",
 siteSettingsRoutes
@@ -51,6 +56,11 @@ app.use(
   "/api/gallery",
   galleryRoutes
 );
+app.use(
+  "/api/event-registrations",
+  eventRegistrationRoutes
+);
+
 
 
 app.get("/", (req, res) => {

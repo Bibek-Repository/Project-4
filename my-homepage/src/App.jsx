@@ -26,6 +26,10 @@ import SiteSettings from "./admin/SiteSettings";
 import ChangePassword from "./admin/ChangePassword";
 
 import BlogDetails from "./pages/BlogDetails";
+import NewsletterManagement from "./admin/NewsletterManagement";
+import EventRegistrationsManagement from "./admin/EventRegistrationsManagement";
+
+
 
 function App() {
   const location = useLocation();
@@ -46,28 +50,38 @@ function App() {
         <Route path="/FinalServices" element={<FinalServices />} />
 
         <Route path="/admin/login" element={<Login />} />
-        <Route path="/admin/dashboard" element={
-                                                <ProtectedRoute>
-                                                <Dashboard />
-                                                </ProtectedRoute>
-                                               } 
-                                              />
+        <Route
+          path="/admin/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/admin/events" element={<EventsManagement />} />
         <Route path="/admin/blogs" element={<BlogsManagement />} />
         <Route path="/admin/services" element={<ServicesManagement />} />
         <Route path="/admin/contacts" element={<ContactManagement />} />
         <Route path="/admin/settings" element={<SiteSettings />} />
         <Route path="/admin/password" element={<ChangePassword />} />
-        <Route path="/admin/gallery" element={
-                                                <ProtectedRoute>
-                                                  <GalleryManagement />
-                                                </ProtectedRoute>
-                                              }
-                                              />
         <Route
-          path="/blog/:slug"
-          element={<BlogDetails />}
+          path="/admin/gallery"
+          element={
+            <ProtectedRoute>
+              <GalleryManagement />
+            </ProtectedRoute>
+          }
         />
+        <Route path="/blog/:slug" element={<BlogDetails />} />
+        <Route path="/admin/newsletter" element={<NewsletterManagement />} />
+        <Route
+  path="/admin/event-registrations"
+  element={
+    <ProtectedRoute>
+      <EventRegistrationsManagement />
+    </ProtectedRoute>
+  }
+/>
       </Routes>
 
       {!isAdminPage && <Footer />}

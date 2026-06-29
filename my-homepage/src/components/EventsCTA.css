@@ -1,23 +1,161 @@
-.events-cta{
-  padding:100px 8%;
-  text-align:center;
+.events-cta {
+  padding: 80px 8%;
+  background: linear-gradient(135deg, #0f172a, #1e3a8a);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.events-cta h2{
-  font-size:2.5rem;
-  margin-bottom:20px;
+.newsletter-box {
+  width: 100%;
+  max-width: 800px;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 50px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
 }
 
-.events-cta p{
-  color:#64748b;
-  margin-bottom:25px;
+.newsletter-box h2 {
+  font-size: 2.4rem;
+  color: #0f172a;
+  margin-bottom: 15px;
 }
 
-.events-cta button{
-  padding:15px 30px;
-  border:none;
-  border-radius:10px;
-  background:#2563eb;
-  color:white;
-  cursor:pointer;
+.newsletter-box p {
+  color: #64748b;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  max-width: 620px;
+  margin: 0 auto 35px;
+}
+
+.newsletter-box form {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+}
+
+.newsletter-box input {
+  flex: 1;
+  height: 58px;
+  padding: 0 22px;
+  font-size: 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 14px;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.newsletter-box input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+.newsletter-box button {
+  height: 58px;
+  padding: 0 32px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #2563eb, #0ea5e9);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.newsletter-box button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(37, 99, 235, 0.3);
+}
+
+.newsletter-box button:active {
+  transform: scale(0.98);
+}
+
+/* ===========================
+   Tablet
+=========================== */
+
+@media (max-width: 992px) {
+  .events-cta {
+    padding: 70px 6%;
+  }
+
+  .newsletter-box {
+    padding: 40px;
+  }
+
+  .newsletter-box h2 {
+    font-size: 2rem;
+  }
+}
+
+/* ===========================
+   Mobile
+=========================== */
+
+@media (max-width: 768px) {
+  .events-cta {
+    padding: 60px 5%;
+  }
+
+  .newsletter-box {
+    padding: 35px 25px;
+  }
+
+  .newsletter-box h2 {
+    font-size: 1.8rem;
+  }
+
+  .newsletter-box p {
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+  }
+
+  .newsletter-box form {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .newsletter-box input,
+  .newsletter-box button {
+    width: 100%;
+  }
+
+  .newsletter-box button {
+    height: 54px;
+  }
+}
+
+/* ===========================
+   Small Phones
+=========================== */
+
+@media (max-width: 480px) {
+  .events-cta {
+    padding: 50px 20px;
+  }
+
+  .newsletter-box {
+    padding: 30px 20px;
+    border-radius: 18px;
+  }
+
+  .newsletter-box h2 {
+    font-size: 1.6rem;
+  }
+
+  .newsletter-box p {
+    font-size: 0.9rem;
+  }
+
+  .newsletter-box input,
+  .newsletter-box button {
+    height: 50px;
+    font-size: 0.95rem;
+  }
 }

@@ -1,10 +1,12 @@
 import "./FeaturedEvent.css";
 import { useEffect, useState } from "react";
+import EventRegistrationModal from "./EventRegistrationModal";
 
 function FeaturedEvent() {
 
   const [event, setEvent] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
 
@@ -67,20 +69,12 @@ function FeaturedEvent() {
   }
 
   return (
-
     <section className="featured-event">
-
       <div className="featured-image">
-
-        <img
-          src={`http://localhost:5000${event.image}`}
-          alt={event.title}
-        />
-
+        <img src={`http://localhost:5000${event.image}`} alt={event.title} />
       </div>
 
       <div className="featured-content">
-
         <span>⭐ Featured Event</span>
 
         <h2>{event.title}</h2>
@@ -88,38 +82,24 @@ function FeaturedEvent() {
         <p>{event.description}</p>
 
         <ul>
+          <li>📅 {new Date(event.eventDate).toLocaleDateString()}</li>
 
-          <li>
-            📅{" "}
-            {new Date(
-              event.eventDate
-            ).toLocaleDateString()}
-          </li>
+          <li>📍 {event.location}</li>
 
-          <li>
-            📍 {event.location}
-          </li>
+          <li>🏷 {event.eventType}</li>
 
-          <li>
-            🏷 {event.eventType}
-          </li>
-
-          <li>
-            🚀 {event.status}
-          </li>
-
+          <li>🚀 {event.status}</li>
         </ul>
 
-        <button>
-
-          Register Now
-
-        </button>
-
+        <button onClick={() => setShowModal(true)}>Register Now</button>
       </div>
-
+      {showModal && (
+        <EventRegistrationModal
+          event={event}
+          onClose={() => setShowModal(false)}
+        />
+      )}
     </section>
-
   );
 
 }

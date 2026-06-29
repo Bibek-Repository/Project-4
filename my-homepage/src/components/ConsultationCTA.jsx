@@ -1,4 +1,5 @@
 import "./ConsultationCTA.css";
+import { Link } from "react-router-dom";
 
 function ConsultationCTA() {
   return (
@@ -12,9 +13,12 @@ function ConsultationCTA() {
         Let's discuss your project requirements today.
       </p>
 
-      <button>
+      <Link
+        to="/Contact"
+        className="consultation-btn"
+      >
         Request Consultation
-      </button>
+      </Link>
 
     </section>
   );

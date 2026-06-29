@@ -1,94 +1,162 @@
-.consultation-cta{
-  padding:120px 10%;
-  text-align:center;
-  background:linear-gradient(
+.consultation-cta {
+  padding: 120px 10%;
+  margin: 80px 5%;
+  text-align: center;
+
+  background: linear-gradient(
     135deg,
     #2563eb,
     #1d4ed8
   );
-  color:white;
-  border-radius:30px;
-  margin:80px 5%;
-  position:relative;
-  overflow:hidden;
+
+  color: white;
+
+  border-radius: 30px;
+
+  position: relative;
+  overflow: hidden;
+
+  box-shadow: 0 20px 50px rgba(37, 99, 235, 0.25);
 }
 
-.consultation-cta::before{
-  content:"";
-  position:absolute;
-  width:300px;
-  height:300px;
-  border-radius:50%;
-  background:rgba(255,255,255,.08);
-  top:-120px;
-  left:-100px;
+.consultation-cta::before {
+  content: "";
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  top: -140px;
+  left: -120px;
 }
 
-.consultation-cta::after{
-  content:"";
-  position:absolute;
-  width:250px;
-  height:250px;
-  border-radius:50%;
-  background:rgba(255,255,255,.08);
-  bottom:-100px;
-  right:-80px;
+.consultation-cta::after {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  bottom: -120px;
+  right: -80px;
 }
 
-.consultation-cta h2{
-  font-size:3rem;
-  margin-bottom:20px;
-  position:relative;
-  z-index:2;
+.consultation-cta h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
 }
 
-.consultation-cta p{
-  max-width:700px;
-  margin:auto;
-  margin-bottom:35px;
-  line-height:1.8;
-  position:relative;
-  z-index:2;
+.consultation-cta p {
+  max-width: 700px;
+  margin: 0 auto 40px;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  opacity: 0.95;
+  position: relative;
+  z-index: 2;
 }
 
-.consultation-cta button{
-  padding:16px 40px;
-  border:none;
-  border-radius:50px;
-  background:white;
-  color:#2563eb;
-  font-weight:700;
-  font-size:1rem;
-  cursor:pointer;
-  transition:.3s;
-  position:relative;
-  z-index:2;
+/* CTA Button */
+
+.consultation-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 16px 38px;
+
+  background: #ffffff;
+  color: #2563eb;
+
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 700;
+
+  border-radius: 50px;
+  border: 2px solid transparent;
+
+  position: relative;
+  z-index: 2;
+
+  transition: all 0.35s ease;
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
 }
 
-.consultation-cta button:hover{
-  transform:translateY(-4px);
-  box-shadow:0 12px 25px rgba(0,0,0,.15);
+.consultation-btn:hover {
+  background: transparent;
+  color: #ffffff;
+  border-color: #ffffff;
+
+  transform: translateY(-6px);
+
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
 }
 
-@media (max-width:768px){
+.consultation-btn:active {
+  transform: scale(0.97);
+}
 
-  .consultation-cta{
-    padding:80px 6%;
-    margin:60px 4%;
-    border-radius:20px;
+.consultation-btn:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.4);
+  outline-offset: 4px;
+}
+
+/* Responsive */
+
+@media (max-width: 992px) {
+
+  .consultation-cta {
+    padding: 90px 8%;
+    margin: 70px 4%;
   }
 
-  .consultation-cta h2{
-    font-size:2rem;
+  .consultation-cta h2 {
+    font-size: 2.5rem;
   }
 
-  .consultation-cta p{
-    font-size:.95rem;
+}
+
+@media (max-width: 768px) {
+
+  .consultation-cta {
+    padding: 70px 6%;
+    margin: 60px 4%;
+    border-radius: 20px;
   }
 
-  .consultation-cta button{
-    width:100%;
-    max-width:300px;
+  .consultation-cta h2 {
+    font-size: 2rem;
+  }
+
+  .consultation-cta p {
+    font-size: 1rem;
+    margin-bottom: 30px;
+  }
+
+  .consultation-btn {
+    width: 100%;
+    max-width: 320px;
+    padding: 15px 25px;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .consultation-cta h2 {
+    font-size: 1.7rem;
+  }
+
+  .consultation-cta p {
+    font-size: 0.95rem;
+  }
+
+  .consultation-btn {
+    font-size: 0.95rem;
   }
 
 }
