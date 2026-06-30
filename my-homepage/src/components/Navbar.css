@@ -1,0 +1,228 @@
+/* ==========================================
+   NAVBAR
+========================================== */
+
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:16px 8%;
+
+    background:rgba(18,18,232,.95);
+    backdrop-filter:blur(12px);
+
+    box-shadow:0 6px 20px rgba(0,0,0,.08);
+}
+
+/* ==========================================
+   LOGO
+========================================== */
+
+.navbar-logo{
+    display:flex;
+    align-items:center;
+    text-decoration:none;
+}
+
+.logo-img{
+    height:60px;
+    transition:.3s;
+}
+
+.logo-img:hover{
+    transform:scale(1.05);
+}
+
+/* ==========================================
+   DESKTOP MENU
+========================================== */
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:30px;
+    list-style:none;
+}
+
+.nav-links li{
+    list-style:none;
+}
+
+.nav-links a{
+    position:relative;
+    color:#fff;
+    text-decoration:none;
+    font-weight:600;
+    transition:.3s;
+}
+
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-6px;
+
+    width:0;
+    height:2px;
+
+    background:#38bdf8;
+
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:#38bdf8;
+}
+
+.nav-links a:hover::after{
+    width:100%;
+}
+
+/* ==========================================
+   HAMBURGER
+========================================== */
+
+.menu-icon{
+
+    display:none;
+
+    width:40px;
+    height:40px;
+
+    cursor:pointer;
+
+    position:relative;
+
+    z-index:1200;
+}
+
+.menu-icon span{
+
+    position:absolute;
+
+    width:30px;
+    height:3px;
+
+    background:#fff;
+
+    left:5px;
+
+    transition:.35s;
+}
+
+.menu-icon span:nth-child(1){
+    top:10px;
+}
+
+.menu-icon span:nth-child(2){
+    top:18px;
+}
+
+.menu-icon span:nth-child(3){
+    top:26px;
+}
+
+/* Animate into X */
+
+.menu-icon.active span:nth-child(1){
+    transform:rotate(45deg);
+    top:18px;
+}
+
+.menu-icon.active span:nth-child(2){
+    opacity:0;
+}
+
+.menu-icon.active span:nth-child(3){
+    transform:rotate(-45deg);
+    top:18px;
+}
+
+/* ==========================================
+   OVERLAY
+========================================== */
+
+.menu-overlay{
+
+    display:none;
+}
+
+@media(max-width:900px){
+
+.menu-overlay{
+
+    display:block;
+
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.3s;
+
+    z-index:998;
+}
+
+.menu-overlay.active{
+
+    opacity:1;
+    visibility:visible;
+}
+
+}
+
+/* ==========================================
+   MOBILE MENU
+========================================== */
+
+@media(max-width:900px){
+
+.menu-icon{
+    display:block;
+}
+
+.nav-links{
+
+    position:fixed;
+
+    top:0;
+    right:-100%;
+
+    width:80%;
+    max-width:340px;
+
+    height:100vh;
+
+    background:#1212e8;
+
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    gap:32px;
+
+    transition:.4s ease;
+
+    z-index:1100;
+}
+
+.nav-links.active{
+
+    right:0;
+}
+
+.nav-links a{
+
+    font-size:20px;
+}
+
+}
