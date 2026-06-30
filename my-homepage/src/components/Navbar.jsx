@@ -3,6 +3,7 @@ import '../index.css';
 import { Link } from "react-router-dom";
 import logo from "../assets/ai_solutions_logo.png";
 
+
 function Navbar() {
   return (
     <nav className="navbar">
@@ -22,6 +23,7 @@ function Navbar() {
         <li><Link to="/GalleryBlog">Photo Galleries and Blogs</Link></li>
         <li><Link to="/Events">Events Timeline</Link></li>
         <li><Link to="/FinalServices">Provided Software Solutions</Link></li>
+        <li><Link to="/admin/login">Admin</Link></li>
       </ul>
     </nav>
   );
