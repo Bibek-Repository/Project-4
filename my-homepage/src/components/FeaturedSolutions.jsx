@@ -13,7 +13,7 @@ function FeaturedSolutions() {
       try {
 
         const response = await fetch(
-          "http://localhost:5000/api/services"
+          "${import.meta.env.VITE_API_URL}/api/services"
         );
 
         const data = await response.json();
@@ -68,7 +68,7 @@ function FeaturedSolutions() {
               <img
                 src={
                   service.image
-                    ? `http://localhost:5000${service.image}`
+                    ? `${import.meta.env.VITE_API_URL}${service.image}`
                     : "https://picsum.photos/600/400"
                 }
                 alt={service.title}

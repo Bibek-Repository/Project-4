@@ -37,7 +37,7 @@ function SiteSettings() {
   const fetchSettings = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/settings"
+        "${import.meta.env.VITE_API_URL}/api/settings"
       );
 
       const data = await response.json();
@@ -58,7 +58,7 @@ function SiteSettings() {
     formData.append("image", file);
 
     const response = await fetch(
-      "http://localhost:5000/api/upload",
+      "${import.meta.env.VITE_API_URL}/api/upload",
       {
         method: "POST",
         headers: {
@@ -87,7 +87,7 @@ function SiteSettings() {
         favicon = await uploadImage(faviconFile);
 
       const response = await fetch(
-        "http://localhost:5000/api/settings",
+        "${import.meta.env.VITE_API_URL}/api/settings",
         {
           method: "PUT",
           headers: {
@@ -333,7 +333,7 @@ function SiteSettings() {
 
             {settings.logo && (
               <img
-                src={`http://localhost:5000${settings.logo}`}
+                src={`${import.meta.env.VITE_API_URL}${settings.logo}`}
                 className="logo-preview"
                 alt="logo"
               />
@@ -354,7 +354,7 @@ function SiteSettings() {
 
             {settings.favicon && (
               <img
-                src={`http://localhost:5000${settings.favicon}`}
+                src={`${import.meta.env.VITE_API_URL}${settings.favicon}`}
                 className="favicon-preview"
                 alt="favicon"
               />

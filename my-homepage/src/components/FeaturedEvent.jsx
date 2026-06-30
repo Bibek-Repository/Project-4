@@ -15,7 +15,7 @@ function FeaturedEvent() {
       try {
 
         const response = await fetch(
-          "http://localhost:5000/api/events"
+          "${import.meta.env.VITE_API_URL}/api/events"
         );
 
         const data = await response.json();
@@ -71,7 +71,7 @@ function FeaturedEvent() {
   return (
     <section className="featured-event">
       <div className="featured-image">
-        <img src={`http://localhost:5000${event.image}`} alt={event.title} />
+        <img src={`${import.meta.env.VITE_API_URL}${event.image}`} alt={event.title} />
       </div>
 
       <div className="featured-content">

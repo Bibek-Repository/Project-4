@@ -20,7 +20,7 @@ function GalleryBlog() {
       try {
 
         const response = await fetch(
-          "http://localhost:5000/api/gallery"
+          "${import.meta.env.VITE_API_URL}/api/gallery"
         );
 
         const data = await response.json();
@@ -53,7 +53,7 @@ function GalleryBlog() {
       try {
 
         const response = await fetch(
-          "http://localhost:5000/api/blogs"
+          "${import.meta.env.VITE_API_URL}/api/blogs"
         );
 
         const data = await response.json();
@@ -99,7 +99,7 @@ function GalleryBlog() {
             gallery.map((image) => (
               <div className="gallery-card" key={image._id}>
                 <img
-                  src={`http://localhost:5000${image.image}`}
+                  src={`${import.meta.env.VITE_API_URL}${image.image}`}
                   alt={image.title}
                   className="gallery-image"
                 />
@@ -134,7 +134,7 @@ function GalleryBlog() {
               <div className="blog-card" key={blog._id}>
                 {blog.image && (
                   <img
-                    src={`http://localhost:5000${blog.image}`}
+                    src={`${import.meta.env.VITE_API_URL}${blog.image}`}
                     alt={blog.title}
                     className="blog-image"
                   />

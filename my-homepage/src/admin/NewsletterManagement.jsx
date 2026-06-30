@@ -16,7 +16,7 @@ function NewsletterManagement() {
       try {
 
         const response = await fetch(
-          "http://localhost:5000/api/newsletter",
+          "${import.meta.env.VITE_API_URL}/api/newsletter",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -55,7 +55,7 @@ function NewsletterManagement() {
     try {
 
       const response = await fetch(
-        `http://localhost:5000/api/newsletter/${id}`,
+        `${import.meta.env.VITE_API_URL}/api/newsletter/${id}`,
         {
           method: "DELETE",
           headers: {

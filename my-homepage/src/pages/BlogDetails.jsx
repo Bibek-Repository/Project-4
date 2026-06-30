@@ -18,7 +18,7 @@ function BlogDetails() {
       setLoading(true);
 
       const res = await axios.get(
-        `http://localhost:5000/api/blogs/slug/${slug}`
+        `${import.meta.env.VITE_API_URL}/api/blogs/slug/${slug}`
       );
 
       setBlog(res.data);

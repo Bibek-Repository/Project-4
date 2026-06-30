@@ -17,7 +17,7 @@ function ContactManagement() {
     const fetchEnquiries = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/contacts",
+          "${import.meta.env.VITE_API_URL}/api/contacts",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -54,7 +54,7 @@ function ContactManagement() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/contacts/${id}`,
+        `${import.meta.env.VITE_API_URL}/api/contacts/${id}`,
         {
           method: "DELETE",
           headers: {
@@ -97,7 +97,7 @@ function ContactManagement() {
   const markAsViewed = async (id) => {
   try {
     await fetch(
-      `http://localhost:5000/api/contacts/${id}/view`,
+      `${import.meta.env.VITE_API_URL}/api/contacts/${id}/view`,
       {
         method: "PATCH",
         headers: {

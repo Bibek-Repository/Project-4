@@ -50,7 +50,7 @@ function EventsManagement() {
       setLoading(true);
 
       const response = await fetch(
-        "http://localhost:5000/api/events",
+        "${import.meta.env.VITE_API_URL}/api/events",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -82,7 +82,7 @@ function EventsManagement() {
     formData.append("image", selectedImage);
 
     const response = await fetch(
-      "http://localhost:5000/api/upload",
+      "${import.meta.env.VITE_API_URL}/api/upload",
       {
         method: "POST",
         headers: {
@@ -104,7 +104,7 @@ function EventsManagement() {
       const imageUrl = await uploadImage();
 
       const response = await fetch(
-        "http://localhost:5000/api/events",
+        "${import.meta.env.VITE_API_URL}/api/events",
         {
           method: "POST",
           headers: {
@@ -141,7 +141,7 @@ function EventsManagement() {
       }
 
       const response = await fetch(
-        `http://localhost:5000/api/events/${editingEvent._id}`,
+        `${import.meta.env.VITE_API_URL}/api/events/${editingEvent._id}`,
         {
           method: "PUT",
           headers: {
@@ -176,7 +176,7 @@ function EventsManagement() {
 
     try {
       await fetch(
-        `http://localhost:5000/api/events/${id}`,
+        `${import.meta.env.VITE_API_URL}/api/events/${id}`,
         {
           method: "DELETE",
           headers: {
@@ -289,7 +289,7 @@ function EventsManagement() {
                     {event.image ? (
 
                       <img
-                        src={`http://localhost:5000${event.image}`}
+                        src={`${import.meta.env.VITE_API_URL}${event.image}`}
                         alt={event.title}
                         className="table-image"
                       />
@@ -525,7 +525,7 @@ function EventsManagement() {
                 editingEvent?.image && (
 
                   <img
-                    src={`http://localhost:5000${editingEvent.image}`}
+                    src={`${import.meta.env.VITE_API_URL}${editingEvent.image}`}
                     alt="Current"
                     className="preview-image"
                   />

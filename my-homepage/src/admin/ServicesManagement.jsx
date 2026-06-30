@@ -25,7 +25,7 @@ function ServicesManagement() {
     const fetchServices = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/services",
+          "${import.meta.env.VITE_API_URL}/api/services",
           {
             headers: {
               Authorization: `Bearer ${token}`
@@ -78,7 +78,7 @@ function ServicesManagement() {
 
     try {
       await fetch(
-        `http://localhost:5000/api/services/${id}`,
+        `${import.meta.env.VITE_API_URL}/api/services/${id}`,
         {
           method: "DELETE",
           headers: {
@@ -106,7 +106,7 @@ function ServicesManagement() {
     );
 
     const uploadResponse = await fetch(
-      "http://localhost:5000/api/upload",
+      "${import.meta.env.VITE_API_URL}/api/upload",
       {
         method: "POST",
         headers: {
@@ -130,7 +130,7 @@ function ServicesManagement() {
         await uploadImage();
 
       const response = await fetch(
-        "http://localhost:5000/api/services",
+        "${import.meta.env.VITE_API_URL}/api/services",
         {
           method: "POST",
           headers: {
@@ -173,7 +173,7 @@ function ServicesManagement() {
       }
 
       const response = await fetch(
-        `http://localhost:5000/api/services/${editingService._id}`,
+        `${import.meta.env.VITE_API_URL}/api/services/${editingService._id}`,
         {
           method: "PUT",
           headers: {
@@ -247,7 +247,7 @@ function ServicesManagement() {
                 <td>
                   {service.image ? (
                     <img
-                      src={`http://localhost:5000${service.image}`}
+                      src={`${import.meta.env.VITE_API_URL}${service.image}`}
                       alt={service.title}
                       className="service-thumbnail"
                     />

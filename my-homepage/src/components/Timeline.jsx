@@ -13,7 +13,7 @@ function Timeline() {
       try {
 
         const response = await fetch(
-          "http://localhost:5000/api/events"
+          "${import.meta.env.VITE_API_URL}/api/events"
         );
 
         const data = await response.json();
@@ -93,7 +93,7 @@ function Timeline() {
                 {event.image && (
 
                   <img
-                    src={`http://localhost:5000${event.image}`}
+                    src={`${import.meta.env.VITE_API_URL}${event.image}`}
                     alt={event.title}
                     className="timeline-image"
                   />

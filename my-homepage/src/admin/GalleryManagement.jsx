@@ -31,7 +31,7 @@ function GalleryManagement() {
       try {
 
         const response = await fetch(
-          "http://localhost:5000/api/gallery"
+          "${import.meta.env.VITE_API_URL}/api/gallery"
         );
 
         const data =
@@ -97,7 +97,7 @@ function GalleryManagement() {
 
     const response =
       await fetch(
-        "http://localhost:5000/api/upload",
+        "${import.meta.env.VITE_API_URL}/api/upload",
         {
           method: "POST",
           headers: {
@@ -125,7 +125,7 @@ function GalleryManagement() {
 
       const response =
         await fetch(
-          "http://localhost:5000/api/gallery",
+          "${import.meta.env.VITE_API_URL}/api/gallery",
           {
             method: "POST",
             headers: {
@@ -177,7 +177,7 @@ function GalleryManagement() {
 
       const response =
         await fetch(
-          `http://localhost:5000/api/gallery/${editingImage._id}`,
+          `${import.meta.env.VITE_API_URL}/api/gallery/${editingImage._id}`,
           {
             method: "PUT",
             headers: {
@@ -225,7 +225,7 @@ function GalleryManagement() {
     try {
 
       await fetch(
-        `http://localhost:5000/api/gallery/${id}`,
+        `${import.meta.env.VITE_API_URL}/api/gallery/${id}`,
         {
           method: "DELETE",
           headers: {
@@ -300,7 +300,7 @@ function GalleryManagement() {
                 <td>
 
                   <img
-                    src={`http://localhost:5000${item.image}`}
+                    src={`${import.meta.env.VITE_API_URL}${item.image}`}
                     alt={item.title}
                     className="gallery-thumbnail"
                   />

@@ -12,7 +12,7 @@ function UpcomingEvents() {
     const fetchEvents = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/events"
+          "${import.meta.env.VITE_API_URL}/api/events"
         );
 
         const data = await response.json();
@@ -59,7 +59,7 @@ function UpcomingEvents() {
             events.map((event) => (
               <div className="upcoming-card" key={event._id}>
                 <img
-                  src={`http://localhost:5000${event.image}`}
+                  src={`${import.meta.env.VITE_API_URL}${event.image}`}
                   alt={event.title}
                 />
 

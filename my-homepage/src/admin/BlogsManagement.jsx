@@ -114,7 +114,7 @@ function BlogsManagement() {
     formData.append("image", selectedImage);
 
     const response = await fetch(
-      "http://localhost:5000/api/upload",
+      "${import.meta.env.VITE_API_URL}/api/upload",
       {
         method: "POST",
         headers: {
@@ -142,7 +142,7 @@ function BlogsManagement() {
       setLoading(true);
 
       const response = await fetch(
-        "http://localhost:5000/api/blogs",
+        "${import.meta.env.VITE_API_URL}/api/blogs",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -176,7 +176,7 @@ function BlogsManagement() {
       const imageUrl = await uploadImage();
 
       const response = await fetch(
-        "http://localhost:5000/api/blogs",
+        "${import.meta.env.VITE_API_URL}/api/blogs",
         {
           method: "POST",
 
@@ -222,7 +222,7 @@ function BlogsManagement() {
       const imageUrl = await uploadImage();
 
       const response = await fetch(
-        `http://localhost:5000/api/blogs/${editingBlog._id}`,
+        `${import.meta.env.VITE_API_URL}/api/blogs/${editingBlog._id}`,
         {
           method: "PUT",
 
@@ -272,7 +272,7 @@ function BlogsManagement() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/blogs/${id}`,
+        `${import.meta.env.VITE_API_URL}/api/blogs/${id}`,
         {
           method: "DELETE",
 
