@@ -56,11 +56,11 @@ function Services() {
   const visibleServices = showAll ? services : services.slice(0, 3);
 
   return (
-    <section className="services-section">
+    <section className="home-services-section">
 
-      <div className="services-container">
+      <div className="home-services-container">
 
-        <div className="services-header">
+        <div className="home-services-header">
 
           <span>OUR SERVICES</span>
 
@@ -74,13 +74,13 @@ function Services() {
 
         </div>
 
-        <div className="services-grid">
+        <div className="home-services-grid">
 
           {visibleServices.map((service, index) => (
 
-            <div className="service-card" key={index}>
+            <div className="home-service-card" key={index}>
 
-              <div className="service-icon">
+              <div className="home-service-icon">
                 {service.icon}
               </div>
 
@@ -88,10 +88,10 @@ function Services() {
 
               <p>{service.description}</p>
 
-              <button className="learn-btn">
+              {/* <button className="learn-btn">
                 Learn More
                 <FaArrowRight />
-              </button>
+              </button> */}
 
             </div>
 
@@ -99,7 +99,7 @@ function Services() {
 
         </div>
 
-        <div className="services-btn-wrapper">
+        <div className="home-services-btn-wrapper">
 
           <button
             className="toggle-btn"

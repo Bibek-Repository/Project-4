@@ -2,7 +2,7 @@ import "../pages/About.css";
 
 function AboutStats() {
   const stats = [
-    { number: "50+", label: "Projects Completed" },
+    { number: "120+", label: "Projects Completed" },
     { number: "30+", label: "AI Models Built" },
     { number: "15+", label: "Global Clients" },
     { number: "5+", label: "Years Experience" },

@@ -7,13 +7,14 @@ import {
 } from "react-icons/fa6";
 
 import "./Footer.css";
+import logo from "../assets/ai_solutions_logo.png";
 
 function Footer() {
 return (
 <footer className="footer">
   <div className="footer-container">
     <div className="footer-column">
-      <img src="/logo.png" alt = "AI Solutions Logo" className="footer-logo"/>
+      <img src={logo} alt="AI Solutions Logo" className="logo-img" />
 
       <p className="footer-description">
         AI Solutions delivers innovative AI-powered software,
@@ -27,7 +28,7 @@ return (
       <ul>
         <li><a href="/">Home</a></li>
         <li><a href="/about">About Us</a></li>
-        <li><a href="/services">Solutions</a></li>
+        <li><a href="/FinalServices">Solutions</a></li>
         <li><a href="/events">Events</a></li>
         <li><a href="/galleryblog">Blogs</a></li>
         <li><a href="/contact">Contact</a></li>
@@ -38,12 +39,12 @@ return (
       <h3>Our Services</h3>
 
       <ul>
-        <li>AI Virtual Assistants</li>
-        <li>Machine Learning Solutions</li>
-        <li>Custom Software Development</li>
-        <li>Data Analytics</li>
-        <li>Cloud Integration</li>
-        <li>Business Automation</li>
+        <li><a href="/FinalServices">AI Virtual Assistants</a></li>
+        <li><a href="/FinalServices">Machine Learning Solutions</a></li>
+        <li><a href="/FinalServices">Custom Software Development</a></li>
+        <li><a href="/FinalServices">Data Analytics</a></li>
+        <li><a href="/FinalServices">Cloud Integration</a></li>
+        <li><a href="/FinalServices">Business Automation</a></li>
       </ul>
     </div>
 

@@ -3,28 +3,28 @@ import "./Testimonials.css";
 function Testimonials() {
   const testimonials = [
     {
-      name: "Ravi Maharjan",
-      role: "Startup Founder",
+      name: "Jack Mooneyham",
+      role: "Chief Executive Officer",
       feedback:
-        "Overview AI Solutions helped us build an AI chatbot that completely transformed our customer support system. Highly recommended!",
+        "AI SOLUTIONS completely transformed how we manage patient operations. Their automation platform reduced administrative workload by nearly 40% while improving the overall experience for both staff and patients.",
     },
     {
-      name: "Subash Panti",
-      role: "Product Manager",
+      name: "Neha Patel",
+      role: "Head of Data & Analytics",
       feedback:
-        "Their team delivered a scalable analytics dashboard faster than expected. The quality and attention to detail were excellent.",
+        "The predictive analytics solution developed by AI SOLUTIONS gives our team incredible visibility into business trends. We now make faster, data-driven decisions with much greater confidence.",
     },
     {
-      name: "Aarav Sharma",
-      role: "Tech Entrepreneur",
+      name: "Mark Singh",
+      role: "Chief Operating Officer",
       feedback:
-        "We saw immediate improvements in automation after working with them. Their AI solutions are practical and effective.",
+        "From planning to deployment, every stage of the project was handled professionally. Their AI assistant dramatically improved guest response times and increased customer satisfaction.",
     },
     {
-      name: "Emily Watson",
-      role: "Business Owner",
+      name: "Sneha Chowdhary",
+      role: "Operations Director",
       feedback:
-        "Professional, fast, and innovative. They built our cloud CRM system and it works flawlessly.",
+        "Working with AI SOLUTIONS has been one of our best technology investments. Their intelligent workflow automation streamlined internal processes and significantly boosted productivity.",
     },
   ];
 

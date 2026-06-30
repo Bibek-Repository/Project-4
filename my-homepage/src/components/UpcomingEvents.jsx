@@ -48,6 +48,7 @@ function UpcomingEvents() {
     <>
       <section className="upcoming-events">
         <h2>Upcoming Events</h2>
+        <p>Stay updated with our latest workshops, webinars, and AI sessions</p>
 
         <div className="upcoming-grid">
           {loading ? (

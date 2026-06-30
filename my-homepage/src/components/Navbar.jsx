@@ -1,11 +1,18 @@
 
-// import '../index.css';
+import '../index.css';
 import { Link } from "react-router-dom";
+import logo from "../assets/ai_solutions_logo.png";
 
 function Navbar() {
   return (
     <nav className="navbar">
-      <div className="logo">Bibek Baiju</div>
+      <div className="logo">
+        <Link to="/" className="logo">
+          <img src={logo} alt="AI Solutions Logo" className="logo-img" />
+        </Link>
+      </div>
+      
+      
 
       <ul className="nav-links">
         <li><Link to="/">Home</Link></li>

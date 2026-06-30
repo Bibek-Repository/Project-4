@@ -49,7 +49,7 @@ function Hero() {
             </div>
 
             <div>
-              <h3>95%</h3>
+              <h3>98%</h3>
               <p>Satisfaction</p>
             </div>
 
@@ -63,7 +63,7 @@ function Hero() {
 
         <div className="hero-visual">
 
-          <div className="dashboard-card">
+          <div className="hero-dashboard-card">
 
             <div className="card-header">
               AI Performance Dashboard

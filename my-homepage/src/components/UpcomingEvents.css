@@ -2,7 +2,12 @@
 
 padding:80px 8%;
 
-background:#f8fafc;
+background: linear-gradient(
+    135deg,
+    #020617 0%,
+    #0f172a 45%,
+    #1e293b 100%
+  );
 
 }
 
@@ -10,10 +15,17 @@ background:#f8fafc;
 
 text-align:center;
 
-margin-bottom:50px;
+margin-bottom:10px;
 
 font-size:38px;
+color: white;
 
+}
+
+.upcoming-events p{
+    text-align:center;
+    margin-bottom:50px;
+    color:white;
 }
 
 .upcoming-grid{

@@ -8,6 +8,8 @@ import Testimonials from "../components/Testimonials";
 import EventsPreview from "../components/EventsPreview";
 import BlogPreview from "../components/BlogPreview";
 import CTA from "../components/CTA";
+import UpcomingEvents from "../components/UpcomingEvents";
+import FeaturedSolutions from "../components/FeaturedSolutions";
 
 
 function Home() {
@@ -17,9 +19,11 @@ function Home() {
       <Stats />
       <Services />
       <WhyChooseUs />
-      <FeaturedProjects />
+      {/* <FeaturedProjects /> */}
+      <FeaturedSolutions />
       <Testimonials />
-      <EventsPreview />
+      {/* <EventsPreview /> */}
+      <UpcomingEvents />
       <BlogPreview />
       <CTA />
       

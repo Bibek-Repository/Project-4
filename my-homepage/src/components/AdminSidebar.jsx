@@ -73,10 +73,12 @@ function AdminSidebar() {
         </li> */}
 
         <li>
-          <Link to="/admin/newsletter">Newsletter</Link>
+          <Link to="/admin/newsletter">📝 Newsletter</Link>
+        </li>
+        <li>
+          <Link to="/admin/event-registrations">📝 Event Registrations</Link>
         </li>
 
-        <Link to="/admin/event-registrations">📝 Event Registrations</Link>
       </ul>
     </div>
   );

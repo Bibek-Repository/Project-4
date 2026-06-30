@@ -4,7 +4,12 @@
 
 .stats {
   padding: 100px 8%;
-  background: linear-gradient(180deg, #f8fafc 0%, #eef4ff 100%);
+  background: linear-gradient(
+    135deg,
+    #020617 0%,
+    #0f172a 45%,
+    #1e293b 100%
+  );
 }
 
 .stats-container {

@@ -1,4 +1,4 @@
-import "./ServiceCategories";
+import "./ServiceCategories.css";
 
 import {
   FaRobot,

@@ -1,6 +1,11 @@
 .solutions-hero{
   padding:120px 10%;
-  background:#f8fafc;
+  background: linear-gradient(
+    135deg,
+    #020617 0%,
+    #0f172a 45%,
+    #1e293b 100%
+  );
   text-align:center;
 }
 

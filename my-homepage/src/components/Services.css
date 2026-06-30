@@ -2,7 +2,7 @@
    SERVICES SECTION
 ========================== */
 
-.services-section{
+.home-services-section{
     background:linear-gradient(
         180deg,
         #030712 0%,
@@ -13,7 +13,7 @@
     color:#fff;
 }
 
-.services-container{
+.home-services-container{
     max-width:1300px;
     margin:auto;
 }
@@ -22,13 +22,13 @@
    HEADING
 ========================== */
 
-.services-header{
+.home-services-header{
     text-align:center;
     max-width:750px;
     margin:0 auto 70px;
 }
 
-.services-header span{
+.home-services-header span{
     display:inline-block;
     padding:8px 18px;
     border-radius:40px;
@@ -42,7 +42,7 @@
     margin-bottom:20px;
 }
 
-.services-header h2{
+.home-services-header h2{
     font-size:48px;
     font-weight:700;
     margin-bottom:22px;
@@ -59,7 +59,7 @@
     -webkit-text-fill-color:transparent;
 }
 
-.services-header p{
+.home-services-header p{
     color:#94a3b8;
     font-size:18px;
     line-height:1.8;
@@ -69,7 +69,7 @@
    GRID
 ========================== */
 
-.services-grid{
+.home-services-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:30px;
@@ -79,7 +79,7 @@
    CARD
 ========================== */
 
-.service-card{
+.home-service-card{
 
     position:relative;
 
@@ -98,7 +98,7 @@
 
 /* animated border */
 
-.service-card::before{
+.home-service-card::before{
 
     content:"";
 
@@ -129,11 +129,11 @@
     transition:.35s;
 }
 
-.service-card:hover::before{
+.home-service-card:hover::before{
     opacity:1;
 }
 
-.service-card:hover{
+.home-service-card:hover{
 
     transform:translateY(-10px);
 
@@ -145,7 +145,7 @@
    ICON
 ========================== */
 
-.service-icon{
+.home-service-icon{
 
     width:70px;
     height:70px;
@@ -171,7 +171,7 @@
     transition:.35s;
 }
 
-.service-card:hover .service-icon{
+.home-service-card:hover .home-service-icon{
 
     transform:rotate(-8deg) scale(1.1);
 
@@ -181,7 +181,7 @@
    TEXT
 ========================== */
 
-.service-card h3{
+.home-service-card h3{
 
     font-size:24px;
 
@@ -191,7 +191,7 @@
 
 }
 
-.service-card p{
+.home-service-card p{
 
     color:#b7c2d3;
 
@@ -240,7 +240,7 @@
    VIEW MORE BUTTON
 ========================== */
 
-.services-btn-wrapper{
+.home-services-btn-wrapper{
 
     margin-top:55px;
 
@@ -287,13 +287,13 @@
 
 @media(max-width:992px){
 
-.services-grid{
+.home-services-grid{
 
 grid-template-columns:repeat(2,1fr);
 
 }
 
-.services-header h2{
+.home-services-header h2{
 
 font-size:38px;
 
@@ -303,37 +303,37 @@ font-size:38px;
 
 @media(max-width:768px){
 
-.services-section{
+.home-services-section{
 
 padding:80px 6%;
 
 }
 
-.services-grid{
+.home-services-grid{
 
 grid-template-columns:1fr;
 
 }
 
-.services-header{
+.home-services-header{
 
 margin-bottom:50px;
 
 }
 
-.services-header h2{
+.home-services-header h2{
 
 font-size:30px;
 
 }
 
-.services-header p{
+.home-services-header p{
 
 font-size:16px;
 
 }
 
-.service-card{
+.home-service-card{
 
 padding:28px;
 
@@ -343,19 +343,19 @@ padding:28px;
 
 @media(max-width:480px){
 
-.services-header h2{
+.home-services-header h2{
 
 font-size:26px;
 
 }
 
-.services-header p{
+.home-services-header p{
 
 font-size:15px;
 
 }
 
-.service-icon{
+.home-service-icon{
 
 width:60px;
 height:60px;

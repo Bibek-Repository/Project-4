@@ -1,54 +1,203 @@
+/* ===========================
+   NAVBAR
+=========================== */
+
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 8%;
-  background: #c8d3f4;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
   position: sticky;
   top: 0;
   z-index: 1000;
-  margin:0;
-}
 
-.logo {
-  font-size: 30px;
-  font-weight: 700;
-  color: #0f172a;
-}
-
-.nav-links {
-  list-style: none;
   display: flex;
-  gap: 22px;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 16px 8%;
+
+  background: rgba(18, 18, 232, 0.95);
+  backdrop-filter: blur(12px);
+
+  box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+
+  transition: all .3s ease;
 }
 
-.nav-links a {
-  text-decoration: none;
-  color: #000000;
-  font-weight: 500;
-  transition: 0.3s;
-  position: relative;
+/* ===========================
+   LOGO
+=========================== */
+
+.logo{
+  display:flex;
+  align-items:center;
+  text-decoration:none;
+}
+
+.logo-img{
+  height:60px;
+  width:auto;
+  transition:.3s;
+}
+
+.logo-img:hover{
+  transform:scale(1.05);
+}
+
+/* ===========================
+   NAVIGATION
+=========================== */
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:35px;
+  list-style:none;
+}
+
+.nav-links li{
+  list-style:none;
+}
+
+.nav-links a{
+  position:relative;
+
+  text-decoration:none;
+  color:white;
+
   font-size:16px;
+  font-weight:600;
+
+  transition:.3s;
 }
 
-.nav-links a:hover {
-  color: #3cd146;
+.nav-links a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-6px;
+
+  width:0;
+  height:2px;
+
+  background:#38bdf8;
+
+  transition:.3s;
 }
 
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -4px;
-  width: 0%;
-  height: 2px;
-  background: #3b82f6;
-  transition: 0.3s;
+.nav-links a:hover{
+  color:#38bdf8;
 }
 
-.nav-links a:hover::after {
-  width: 100%;
+.nav-links a:hover::after{
+  width:100%;
+}
+
+/* ===========================
+   CONTACT BUTTON
+=========================== */
+
+.contact-btn{
+
+  padding:11px 24px;
+
+  background:#38bdf8;
+  color:white !important;
+
+  border-radius:50px;
+
+  transition:.3s;
+
+  box-shadow:0 8px 18px rgba(56,189,248,.25);
+}
+
+.contact-btn::after{
+  display:none;
+}
+
+.contact-btn:hover{
+  background:#0ea5e9;
+  transform:translateY(-2px);
+}
+
+/* ===========================
+   HAMBURGER
+=========================== */
+
+.menu-icon{
+  display:none;
+
+  flex-direction:column;
+  justify-content:center;
+
+  cursor:pointer;
+
+  gap:5px;
+}
+
+.menu-icon span{
+
+  width:28px;
+  height:3px;
+
+  background:white;
+
+  border-radius:10px;
+
+  transition:.3s;
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media(max-width:900px){
+
+  .menu-icon{
+      display:flex;
+  }
+
+  .nav-links{
+
+      position:absolute;
+
+      top:100%;
+      left:0;
+
+      width:100%;
+
+      background:#5a8165;
+
+      flex-direction:column;
+
+      gap:25px;
+
+      padding:35px 0;
+
+      transform:translateY(-20px);
+
+      opacity:0;
+
+      visibility:hidden;
+
+      transition:.35s;
+  }
+
+  .nav-links.active{
+
+      opacity:1;
+
+      visibility:visible;
+
+      transform:translateY(0);
+  }
+
+  .nav-links li{
+      width:100%;
+      text-align:center;
+  }
+
+  .nav-links a{
+      font-size:18px;
+  }
+
 }
 
 

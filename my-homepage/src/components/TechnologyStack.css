@@ -1,6 +1,13 @@
 .tech-stack{
   padding:90px 10%;
   text-align:center;
+  background: linear-gradient(
+    135deg,
+    #020617 0%,
+    #0f172a 45%,
+    #1e293b 100%
+  );
+  color:white;
 }
 
 .tech-grid{
