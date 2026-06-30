@@ -17,7 +17,7 @@ function ContactManagement() {
     const fetchEnquiries = async () => {
       try {
         const response = await fetch(
-          "${import.meta.env.VITE_API_URL}/api/contacts",
+          `${import.meta.env.VITE_API_URL}/api/contacts`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

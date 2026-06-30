@@ -25,7 +25,7 @@ function ServicesManagement() {
     const fetchServices = async () => {
       try {
         const response = await fetch(
-          "${import.meta.env.VITE_API_URL}/api/services",
+          `${import.meta.env.VITE_API_URL}/api/services`,
           {
             headers: {
               Authorization: `Bearer ${token}`
@@ -106,7 +106,7 @@ function ServicesManagement() {
     );
 
     const uploadResponse = await fetch(
-      "${import.meta.env.VITE_API_URL}/api/upload",
+      `${import.meta.env.VITE_API_URL}/api/upload`,
       {
         method: "POST",
         headers: {
@@ -130,7 +130,7 @@ function ServicesManagement() {
         await uploadImage();
 
       const response = await fetch(
-        "${import.meta.env.VITE_API_URL}/api/services",
+        `${import.meta.env.VITE_API_URL}/api/services`,
         {
           method: "POST",
           headers: {

@@ -13,7 +13,7 @@ function FeaturedSolutions() {
       try {
 
         const response = await fetch(
-          "${import.meta.env.VITE_API_URL}/api/services"
+          `${import.meta.env.VITE_API_URL}/api/services`
         );
 
         const data = await response.json();

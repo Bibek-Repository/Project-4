@@ -23,7 +23,7 @@ function EventRegistrationsManagement() {
       try {
 
         const response = await fetch(
-          "${import.meta.env.VITE_API_URL}/api/event-registrations",
+          `${import.meta.env.VITE_API_URL}/api/event-registrations`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

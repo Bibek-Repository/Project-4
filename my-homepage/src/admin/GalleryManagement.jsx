@@ -31,7 +31,7 @@ function GalleryManagement() {
       try {
 
         const response = await fetch(
-          "${import.meta.env.VITE_API_URL}/api/gallery"
+          `${import.meta.env.VITE_API_URL}/api/gallery`
         );
 
         const data =
@@ -97,7 +97,7 @@ function GalleryManagement() {
 
     const response =
       await fetch(
-        "${import.meta.env.VITE_API_URL}/api/upload",
+        `${import.meta.env.VITE_API_URL}/api/upload`,
         {
           method: "POST",
           headers: {
@@ -125,7 +125,7 @@ function GalleryManagement() {
 
       const response =
         await fetch(
-          "${import.meta.env.VITE_API_URL}/api/gallery",
+          `${import.meta.env.VITE_API_URL}/api/gallery`,
           {
             method: "POST",
             headers: {

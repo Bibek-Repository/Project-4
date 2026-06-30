@@ -16,7 +16,7 @@ function NewsletterManagement() {
       try {
 
         const response = await fetch(
-          "${import.meta.env.VITE_API_URL}/api/newsletter",
+          `${import.meta.env.VITE_API_URL}/api/newsletter`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

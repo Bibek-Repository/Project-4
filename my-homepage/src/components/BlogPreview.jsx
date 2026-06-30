@@ -14,7 +14,7 @@ function BlogPreview() {
       try {
 
         const response = await fetch(
-          "${import.meta.env.VITE_API_URL}/api/blogs"
+          `${import.meta.env.VITE_API_URL}/api/blogs`
         );
 
         const data = await response.json();

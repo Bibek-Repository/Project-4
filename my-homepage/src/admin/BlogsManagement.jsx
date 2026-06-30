@@ -114,7 +114,7 @@ function BlogsManagement() {
     formData.append("image", selectedImage);
 
     const response = await fetch(
-      "${import.meta.env.VITE_API_URL}/api/upload",
+      `${import.meta.env.VITE_API_URL}/api/upload`,
       {
         method: "POST",
         headers: {
@@ -142,7 +142,7 @@ function BlogsManagement() {
       setLoading(true);
 
       const response = await fetch(
-        "${import.meta.env.VITE_API_URL}/api/blogs",
+        `${import.meta.env.VITE_API_URL}/api/blogs`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -176,7 +176,7 @@ function BlogsManagement() {
       const imageUrl = await uploadImage();
 
       const response = await fetch(
-        "${import.meta.env.VITE_API_URL}/api/blogs",
+        `${import.meta.env.VITE_API_URL}/api/blogs`,
         {
           method: "POST",
 

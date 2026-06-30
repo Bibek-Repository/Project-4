@@ -50,7 +50,7 @@ function EventsManagement() {
       setLoading(true);
 
       const response = await fetch(
-        "${import.meta.env.VITE_API_URL}/api/events",
+        `${import.meta.env.VITE_API_URL}/api/events`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -82,7 +82,7 @@ function EventsManagement() {
     formData.append("image", selectedImage);
 
     const response = await fetch(
-      "${import.meta.env.VITE_API_URL}/api/upload",
+      `${import.meta.env.VITE_API_URL}/api/upload`,
       {
         method: "POST",
         headers: {
@@ -104,7 +104,7 @@ function EventsManagement() {
       const imageUrl = await uploadImage();
 
       const response = await fetch(
-        "${import.meta.env.VITE_API_URL}/api/events",
+        `${import.meta.env.VITE_API_URL}/api/events`,
         {
           method: "POST",
           headers: {

@@ -9,7 +9,7 @@ function EventsCTA() {
 
     try {
       const response = await fetch(
-        "${import.meta.env.VITE_API_URL}/api/newsletter",
+        `${import.meta.env.VITE_API_URL}/api/newsletter`,
         {
           method: "POST",
           headers: {

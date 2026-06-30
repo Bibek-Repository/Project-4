@@ -28,7 +28,7 @@ function EventRegistrationModal({ event, onClose }) {
     try {
 
       const response = await fetch(
-        "${import.meta.env.VITE_API_URL}/api/event-registrations",
+        `${import.meta.env.VITE_API_URL}/api/event-registrations`,
         {
           method: "POST",
 

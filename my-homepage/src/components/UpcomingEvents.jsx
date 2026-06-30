@@ -12,7 +12,7 @@ function UpcomingEvents() {
     const fetchEvents = async () => {
       try {
         const response = await fetch(
-          "${import.meta.env.VITE_API_URL}/api/events"
+          `${import.meta.env.VITE_API_URL}/api/events`
         );
 
         const data = await response.json();

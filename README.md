@@ -1,3 +1,6 @@
+Author:
+Bibek Baiju
+
 # AI Solutions Website
 
 This repository contains a full-stack AI Solutions website with a React + Vite frontend and an Express + MongoDB backend. The project includes a public site, admin dashboard, blog, events, contact management, newsletter subscription, gallery management, and site settings.

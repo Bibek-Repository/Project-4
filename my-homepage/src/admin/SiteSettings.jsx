@@ -37,7 +37,7 @@ function SiteSettings() {
   const fetchSettings = async () => {
     try {
       const response = await fetch(
-        "${import.meta.env.VITE_API_URL}/api/settings"
+        `${import.meta.env.VITE_API_URL}/api/settings`
       );
 
       const data = await response.json();
@@ -58,7 +58,7 @@ function SiteSettings() {
     formData.append("image", file);
 
     const response = await fetch(
-      "${import.meta.env.VITE_API_URL}/api/upload",
+      `${import.meta.env.VITE_API_URL}/api/upload`,
       {
         method: "POST",
         headers: {
@@ -87,7 +87,7 @@ function SiteSettings() {
         favicon = await uploadImage(faviconFile);
 
       const response = await fetch(
-        "${import.meta.env.VITE_API_URL}/api/settings",
+        `${import.meta.env.VITE_API_URL}/api/settings`,
         {
           method: "PUT",
           headers: {
