@@ -1,27 +1,32 @@
+import { FaBars } from "react-icons/fa";
+import "./AdminNavbar.css";
 
-function AdminNavbar() {
-
+function AdminNavbar({ setSidebarOpen }) {
   const logout = () => {
-
     localStorage.removeItem("token");
     localStorage.removeItem("admin");
 
     window.location.href = "/admin/login";
-
   };
 
   return (
     <div className="admin-navbar">
 
-      <h2>Dashboard</h2>
+      <div className="navbar-left">
 
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "15px",
-        }}
-      >
+        <button
+          className="mobile-menu-btn"
+          onClick={() => setSidebarOpen(true)}
+        >
+          <FaBars />
+        </button>
+
+        <h2>Dashboard</h2>
+
+      </div>
+
+      <div className="navbar-right">
+
         <span>Welcome Admin</span>
 
         <button
@@ -30,6 +35,7 @@ function AdminNavbar() {
         >
           Logout
         </button>
+
       </div>
 
     </div>
@@ -37,4 +43,3 @@ function AdminNavbar() {
 }
 
 export default AdminNavbar;
-

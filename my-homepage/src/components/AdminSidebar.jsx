@@ -1,6 +1,5 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import "./AdminSidebar.css";
-import { Link } from "react-router-dom";
 
 import {
   FaTachometerAlt,
@@ -10,75 +9,89 @@ import {
   FaEnvelope,
   FaCog,
   FaKey,
-  FaSignOutAlt,
   FaImages,
 } from "react-icons/fa";
 
-function AdminSidebar() {
+function AdminSidebar({ sidebarOpen, setSidebarOpen }) {
+  const closeSidebar = () => {
+    setSidebarOpen(false);
+  };
+
   return (
-    <div className="admin-sidebar">
+    <div className={`admin-sidebar ${sidebarOpen ? "open" : ""}`}>
       <div className="sidebar-logo">AI Solutions</div>
 
       <ul>
-        <NavLink to="/admin/dashboard">
+        <NavLink to="/admin/dashboard" onClick={closeSidebar}>
           <li>
-            <FaTachometerAlt /> Dashboard
+            <FaTachometerAlt />
+            <span>Dashboard</span>
           </li>
         </NavLink>
 
-        <NavLink to="/admin/events">
+        <NavLink to="/admin/events" onClick={closeSidebar}>
           <li>
-            <FaCalendarAlt /> Events
+            <FaCalendarAlt />
+            <span>Events</span>
           </li>
         </NavLink>
 
-        <NavLink to="/admin/gallery">
+        <NavLink to="/admin/gallery" onClick={closeSidebar}>
           <li>
-            <FaImages /> Gallery
+            <FaImages />
+            <span>Gallery</span>
           </li>
         </NavLink>
 
-        <NavLink to="/admin/blogs">
+        <NavLink to="/admin/blogs" onClick={closeSidebar}>
           <li>
-            <FaBlog /> Blogs
+            <FaBlog />
+            <span>Blogs</span>
           </li>
         </NavLink>
 
-        <NavLink to="/admin/services">
+        <NavLink to="/admin/services" onClick={closeSidebar}>
           <li>
-            <FaCogs /> Services
+            <FaCogs />
+            <span>Services</span>
           </li>
         </NavLink>
 
-        <NavLink to="/admin/contacts">
+        <NavLink to="/admin/contacts" onClick={closeSidebar}>
           <li>
-            <FaEnvelope /> Contacts
+            <FaEnvelope />
+            <span>Contacts</span>
           </li>
         </NavLink>
 
-        <NavLink to="/admin/settings">
+        <NavLink to="/admin/settings" onClick={closeSidebar}>
           <li>
-            <FaCog /> Settings
+            <FaCog />
+            <span>Settings</span>
           </li>
         </NavLink>
 
-        <NavLink to="/admin/password">
+        <NavLink to="/admin/password" onClick={closeSidebar}>
           <li>
-            <FaKey /> Password
+            <FaKey />
+            <span>Password</span>
           </li>
         </NavLink>
-
-        {/* <li>
-          <FaSignOutAlt /> Logout
-        </li> */}
 
         <li>
-          <Link to="/admin/newsletter">📝 Newsletter</Link>
-        </li>
-        <li>
-          <Link to="/admin/event-registrations">📝 Event Registrations</Link>
+          <Link to="/admin/newsletter" onClick={closeSidebar}>
+            📝 <span>Newsletter</span>
+          </Link>
         </li>
 
+        <li>
+          <Link
+            to="/admin/event-registrations"
+            onClick={closeSidebar}
+          >
+            📝 <span>Event Registrations</span>
+          </Link>
+        </li>
       </ul>
     </div>
   );

@@ -59,3 +59,72 @@
 .admin-content::-webkit-scrollbar-thumb:hover {
   background: #a8a8a8;
 }
+
+/* Mobile menu button */
+
+.mobile-menu-btn{
+    display:none;
+
+    position:fixed;
+    top:18px;
+    left:18px;
+
+    z-index:1200;
+
+    width:45px;
+    height:45px;
+
+    border:none;
+    border-radius:10px;
+
+    background:#0f172a;
+    color:white;
+
+    cursor:pointer;
+
+    font-size:20px;
+}
+
+
+/* Overlay */
+
+.sidebar-overlay{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+    z-index:999;
+
+    opacity:0;
+
+    transition:.3s;
+}
+
+.sidebar-overlay.show{
+
+    display:block;
+
+    opacity:1;
+}
+
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.mobile-menu-btn{
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.admin-content{
+padding:20px;
+}
+
+}

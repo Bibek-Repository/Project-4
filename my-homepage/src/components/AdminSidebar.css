@@ -1,5 +1,5 @@
 .admin-sidebar{
-  width:260px;
+  width:220px;
   min-height:100vh;
   background:#0f172a;
   color:white;
@@ -38,4 +38,37 @@
 
 .admin-sidebar a.active li {
   background: #1e293b;
+}
+
+/* Mobile Sidebar */
+
+@media(max-width:768px){
+
+.admin-sidebar{
+
+position:fixed;
+
+top:0;
+left:-240px;
+
+width:220px;
+
+height:100vh;
+
+z-index:1000;
+
+transition:.35s ease;
+
+box-shadow:0 0 30px rgba(0,0,0,.3);
+
+overflow-y:auto;
+
+}
+
+.admin-sidebar.open{
+
+left:0;
+
+}
+
 }

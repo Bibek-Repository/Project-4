@@ -41,5 +41,100 @@
 
 .service-card h3{
   margin:20px 0;
-  color: white;
+  color:#111827;
+}
+
+/* Large Tablets */
+@media (max-width: 992px) {
+
+  .service-categories {
+    padding: 80px 5%;
+  }
+
+  .service-categories h2 {
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+  }
+
+  .service-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .service-card {
+    padding: 30px;
+  }
+}
+
+/* Tablets & Mobile */
+@media (max-width: 768px) {
+
+  .service-categories {
+    padding: 60px 5%;
+  }
+
+  .service-categories h2 {
+    font-size: 2rem;
+    margin-bottom: 35px;
+  }
+
+  .service-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .service-card {
+    padding: 28px 22px;
+  }
+
+  .service-card svg {
+    font-size: 2.2rem;
+  }
+
+  .service-card h3 {
+    margin: 18px 0;
+    font-size: 1.3rem;
+  }
+
+  .service-card p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+}
+
+/* Small Phones */
+@media (max-width: 480px) {
+
+  .service-categories {
+    padding: 50px 20px;
+  }
+
+  .service-categories h2 {
+    font-size: 1.75rem;
+    margin-bottom: 30px;
+  }
+
+  .service-grid {
+    gap: 18px;
+  }
+
+  .service-card {
+    padding: 24px 18px;
+    border-radius: 16px;
+  }
+
+  .service-card svg {
+    font-size: 2rem;
+  }
+
+  .service-card h3 {
+    font-size: 1.15rem;
+    margin: 16px 0;
+    color:#111827;
+  }
+
+  .service-card p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
 }
