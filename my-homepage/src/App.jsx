@@ -29,6 +29,8 @@ import BlogDetails from "./pages/BlogDetails";
 import NewsletterManagement from "./admin/NewsletterManagement";
 import EventRegistrationsManagement from "./admin/EventRegistrationsManagement";
 
+import Chatbot from "./components/Chatbot/Chatbot";
+
 
 
 function App() {
@@ -84,6 +86,7 @@ function App() {
 />
       </Routes>
 
+      {!isAdminPage && <Chatbot />}
       {!isAdminPage && <Footer />}
     </>
   );

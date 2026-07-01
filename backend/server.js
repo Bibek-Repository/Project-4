@@ -17,6 +17,7 @@ const dashboardRoutes = require("./routes/dashboardRoutes");
 const path = require("path");
 const uploadRoutes = require("./routes/uploadRoutes");
 const newsletterRoutes = require("./routes/newsletterRoutes");
+const chatRoutes = require("./routes/chatRoutes");
 const galleryRoutes =
   require("./routes/galleryRoutes");
 const eventRegistrationRoutes = require(
@@ -24,6 +25,7 @@ const eventRegistrationRoutes = require(
 );
 const siteSettingsRoutes =
 require("./routes/siteSettingsRoutes");
+
 
 connectDB();
 
@@ -60,6 +62,7 @@ app.use(
   "/api/event-registrations",
   eventRegistrationRoutes
 );
+app.use("/api/chat", chatRoutes);
 
 
 
